@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package tubes;
 
-import Model.Dosen;
-import Model.ModelDosen;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
@@ -17,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ChindyAmalia
+ * @author R O G
  */
 public class MainGUIDosen extends javax.swing.JFrame {
 
@@ -43,15 +41,9 @@ public class MainGUIDosen extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jLDosen = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLLast = new javax.swing.JLabel();
         jLabelNID = new javax.swing.JLabel();
-        jTextFieldFirstName = new javax.swing.JTextField();
-        jTextFieldLastName = new javax.swing.JTextField();
         jTextFieldNID = new javax.swing.JTextField();
         jBCreateDosen = new javax.swing.JButton();
-        jBUpdate = new javax.swing.JButton();
-        jBDelete = new javax.swing.JButton();
         btn_back = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTabledosen = new javax.swing.JTable();
@@ -89,36 +81,14 @@ public class MainGUIDosen extends javax.swing.JFrame {
         jLDosen.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         jLDosen.setText("DOSEN");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 11)); // NOI18N
-        jLabel2.setText("First Name");
-
-        jLLast.setFont(new java.awt.Font("Times New Roman", 3, 11)); // NOI18N
-        jLLast.setText("Last Name");
-
         jLabelNID.setFont(new java.awt.Font("Times New Roman", 3, 11)); // NOI18N
         jLabelNID.setText("NIDN");
 
         jBCreateDosen.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        jBCreateDosen.setText("Create");
+        jBCreateDosen.setText("Search");
         jBCreateDosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCreateDosenActionPerformed(evt);
-            }
-        });
-
-        jBUpdate.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        jBUpdate.setText("Update");
-        jBUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBUpdateActionPerformed(evt);
-            }
-        });
-
-        jBDelete.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        jBDelete.setText("Delete");
-        jBDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBDeleteActionPerformed(evt);
             }
         });
 
@@ -163,25 +133,16 @@ public class MainGUIDosen extends javax.swing.JFrame {
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addComponent(btn_back)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(122, 122, 122)
                         .addComponent(jLDosen))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabelNID)
-                            .addComponent(jLLast))
-                        .addGap(41, 41, 41)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(jTextFieldNID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(70, 70, 70)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBUpdate)
-                    .addComponent(jBCreateDosen)
-                    .addComponent(jBDelete))
-                .addContainerGap(30, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jLabelNID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addComponent(jTextFieldNID, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBCreateDosen)
+                .addGap(27, 27, 27))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,37 +151,29 @@ public class MainGUIDosen extends javax.swing.JFrame {
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLDosen)
                     .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNID)
-                    .addComponent(jTextFieldNID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBCreateDosen))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(47, 47, 47)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNID, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jBUpdate))
-                    .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBDelete)
-                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLLast)
-                        .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(64, 64, 64)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(227, Short.MAX_VALUE))
+                        .addComponent(jTextFieldNID, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBCreateDosen)))
+                .addGap(124, 124, 124)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(399, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jInternalFrame1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -230,67 +183,18 @@ public class MainGUIDosen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBCreateDosenActionPerformed
 
-    private void jBUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBUpdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBUpdateActionPerformed
-
-    private void jBDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBDeleteActionPerformed
-
     /**
      * @param args the command line arguments
      */public JButton getBtnTambah() {
         return jBCreateDosen;
     }
 
-    public void setDataDosen(ArrayList<ModelDosen> Dosen){
-        for (int j = 0; j < Dosen.size(); j++) {
-            jTabledosen.setValueAt(Dosen.get(j).getNID(), j, 0);
-            jTabledosen.setValueAt(Dosen.get(j).getFirstName(), j, 1);
-            jTabledosen.setValueAt(Dosen.get(j).getLastName(), j, 2);
-        }
-    
-    }
-
-    
-    public JButton getBtnDelete() {
-        return jBDelete;
-    }
-
-    
-
-    public JButton getBtnUpdate() {
-        return jBUpdate;
-    }
-
-    
     public JButton getBtn_back(){
         return btn_back;
     }
 
     public JTable getjTabledosen() {
         return jTabledosen;
-    }
-
-    
-
-
-
-    public void setjTextFieldFirstName(String s) {
-        this.jTextFieldFirstName.setText(s);
-    }
-
-    public void setjTextFieldLastName(String s) {
-        this.jTextFieldLastName.setText(s);
-    }
-
-    public JTextField getjTextFieldFirstName() {
-        return jTextFieldFirstName;
-    }
-
-    public JTextField getjTextFieldLastName() {
-        return jTextFieldLastName;
     }
 
     public JTextField getjTextFieldNID() {
@@ -303,25 +207,10 @@ public class MainGUIDosen extends javax.swing.JFrame {
 
     public void setjTextFieldNID(JTextField jTextFieldNID) {
         this.jTextFieldNID = jTextFieldNID;
-    }
-    
-    public void showAll(ArrayList<ModelDosen> dataDosen) {
-        DefaultTableModel model = (DefaultTableModel) jTabledosen.getModel();
-        model.setRowCount(0);
-        for (ModelDosen x : dataDosen) {
-		model.addRow(new Object[] {x.getNID(), x.getFirstName(),
-			x.getLastName()});
-        }
-    }
-    
-    
-    
-    
-    
+    }  
+     
     public void addActionListener(ActionListener ae) {
         jBCreateDosen.addActionListener(ae);
-        jBDelete.addActionListener(ae);
-        jBUpdate.addActionListener(ae);
         btn_back.addActionListener(ae);
         
     }
@@ -330,12 +219,8 @@ public class MainGUIDosen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
     private javax.swing.JButton jBCreateDosen;
-    private javax.swing.JButton jBDelete;
-    private javax.swing.JButton jBUpdate;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLDosen;
-    private javax.swing.JLabel jLLast;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelNID;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -343,8 +228,12 @@ public class MainGUIDosen extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTabledosen;
-    private javax.swing.JTextField jTextFieldFirstName;
-    private javax.swing.JTextField jTextFieldLastName;
     private javax.swing.JTextField jTextFieldNID;
     // End of variables declaration//GEN-END:variables
+
+    private class jTextFieldFirstName {
+
+        public jTextFieldFirstName() {
+        }
+    }
 }

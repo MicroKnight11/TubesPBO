@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -28,7 +29,7 @@ public class tes extends javax.swing.JFrame {
      * Creates new form tes
      */
     Connection con = null;
-    PreparedStatement pst = null;
+    Statement stmt = null;
     ResultSet rs = null;
     
     public tes() {
@@ -445,14 +446,15 @@ public class tes extends javax.swing.JFrame {
     }
     private void combobox(){
         try{
-            con= DriverManager.getConnection("","root","")//link sql
-            String sql = "select * from jadwal";
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
+            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE", "PBO", "tubes");//link sql
+            String sql = "select id_jadwal from jadwal";
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(sql);
             while(rs.next()){
-                String name = rs.getString("fname");
-                cbJadwal.addItem(name);
+                String name = rs.getString("id_jadwal");
+                cbJadwal.addItem(name); 
             }
+            
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex);
         }

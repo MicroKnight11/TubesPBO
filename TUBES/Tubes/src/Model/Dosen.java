@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Model.Matkul.ModelMatkul;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -22,7 +23,7 @@ public class Dosen {
     public class ModelDosen extends Human{
         private String KK;
         private String NID;
-        private ArrayList<ModelMatkul> listMatKul;
+        private ModelMatkul listMatKul;
     
         public ModelDosen(String NID, String KK, String nama, String tanggalLahir) {
             super(nama, tanggalLahir);

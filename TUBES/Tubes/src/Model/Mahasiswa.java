@@ -7,6 +7,7 @@ package Model;
 //import java.sql.Statement;
 //import java.util.ArrayList;
 //import javax.swing.JOptionPane;
+import Model.Matkul.ModelMatkul;
 import java.util.*;
 import java.util.logging.*;
 import javax.swing.JOptionPane;

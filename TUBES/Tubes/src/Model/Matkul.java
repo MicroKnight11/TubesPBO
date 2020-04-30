@@ -6,6 +6,7 @@
 package Model;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 //import java.sql.Statement;
 //import javax.swing.JOptionPane;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class Matkul {
     private Database db;
     private String sql;
-    private Statement stat;
+   // private Statement stat;
     private ArrayList<ModelMatkul> listMatkul = new ArrayList();
     
     public class ModelMatkul {
@@ -24,13 +25,13 @@ public class Matkul {
         private String nama_MK;
         private String SKS;
         private Dosen Dsn;
-        private ArrayList<ModelMahasiswa> listMhs;
+        //private ArrayList<ModelMahasiswa> listMhs;
         
         public ModelMatkul(String KD_MK, String nama_MK, String SKS) {
             this.KD_MK = KD_MK;
             this.nama_MK = nama_MK;
             this.SKS = SKS;
-            listMhs = new ArrayList();
+            //listMhs = new ArrayList();
         }
 
         public String getKD_MK() {
@@ -116,9 +117,9 @@ public class Matkul {
         //return value;
     }
     
-     public ArrayList<ModelMatkul> getListMatkul() {
-        return listMahatkul;
-    }
+//     public ArrayList<ModelMatkul> getListMatkul() {
+//        return listMahatkul;
+//    }
 
     public void setListMatkul(ArrayList<ModelMatkul> listMatkul) {
         this.listMatkul = listMatkul;

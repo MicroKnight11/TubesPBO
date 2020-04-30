@@ -15,7 +15,8 @@ public class JavaApplication1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        tes a = new tes();
+        a.setVisible(true);
         System.out.println("oke jadi");
     }
     

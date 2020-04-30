@@ -6,6 +6,7 @@
 package GUI;
 
 import Model.Dosen;
+import Model.ModelDosen;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
@@ -243,7 +244,7 @@ public class MainGUIDosen extends javax.swing.JFrame {
         return jBCreateDosen;
     }
 
-    public void setDataDosen(ArrayList<Dosen> Dosen){
+    public void setDataDosen(ArrayList<ModelDosen> Dosen){
         for (int j = 0; j < Dosen.size(); j++) {
             jTabledosen.setValueAt(Dosen.get(j).getNID(), j, 0);
             jTabledosen.setValueAt(Dosen.get(j).getFirstName(), j, 1);
@@ -304,10 +305,10 @@ public class MainGUIDosen extends javax.swing.JFrame {
         this.jTextFieldNID = jTextFieldNID;
     }
     
-    public void showAll(ArrayList<Dosen> dataDosen) {
+    public void showAll(ArrayList<ModelDosen> dataDosen) {
         DefaultTableModel model = (DefaultTableModel) jTabledosen.getModel();
         model.setRowCount(0);
-        for (Dosen x : dataDosen) {
+        for (ModelDosen x : dataDosen) {
 		model.addRow(new Object[] {x.getNID(), x.getFirstName(),
 			x.getLastName()});
         }

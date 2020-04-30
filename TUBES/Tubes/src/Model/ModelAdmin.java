@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tubes;
+package Model;
 
 //import Controller.Controller;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class ModelAdmin {   
     private int id;
-    private ArrayList<ModelMatKul> Mk;
+    private ArrayList<ModelMatkul> Mk;
 
     public ModelAdmin() {
         this.Mk = new ArrayList<>();

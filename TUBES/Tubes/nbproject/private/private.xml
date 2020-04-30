@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sdzak/Documents/GitHub/TubesPBO/TUBES/Tubes/src/Model/ModelDosen.java</file>
-            <file>file:/C:/Users/sdzak/Documents/GitHub/TubesPBO/TUBES/Tubes/src/GUI/MainGUIDosen.java</file>
-            <file>file:/C:/Users/sdzak/Documents/GitHub/TubesPBO/TUBES/Tubes/src/Coba.java</file>
-            <file>file:/C:/Users/sdzak/Documents/GitHub/TubesPBO/TUBES/Tubes/src/Model/ModelAdmin.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/TubesPBO/TUBES/Tubes/src/Database/Database.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/TubesPBO/TUBES/Tubes/src/Model/ModelMatkul.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/TubesPBO/TUBES/Tubes/src/Model/ModelGedung.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/TubesPBO/TUBES/Tubes/src/Model/ModelRuangan.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/TubesPBO/TUBES/Tubes/src/Model/Mahasiswa.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/TubesPBO/TUBES/Tubes/src/Model/ModelAdmin.java</file>
         </group>
     </open-files>
 </project-private>

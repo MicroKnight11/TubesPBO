@@ -68,6 +68,12 @@ public class tes extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         cbJadwal = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        jtRuang = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jtHari = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jtMatkul = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txOutput = new javax.swing.JTextArea();
@@ -189,6 +195,28 @@ public class tes extends javax.swing.JFrame {
 
         jLabel2.setText("Jadwal         :");
 
+        jtRuang.setEditable(false);
+
+        jLabel10.setText("Ruangan      :");
+
+        jLabel11.setText("Hari             :");
+
+        jtHari.setEditable(false);
+        jtHari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtHariActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Matkul         :");
+
+        jtMatkul.setEditable(false);
+        jtMatkul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtMatkulActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -199,44 +227,59 @@ public class tes extends javax.swing.JFrame {
                 .addGap(78, 78, 78))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(94, 94, 94)
+                        .addComponent(chRabu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(chSabtu))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfNIM, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chKalkulus)
-                            .addComponent(chEnglish)
-                            .addComponent(chJarkom)
-                            .addComponent(chPBO)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(94, 94, 94)
-                            .addComponent(chRabu)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(chSabtu))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel9)
-                            .addGap(6, 6, 6)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(chSelasa)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(chJumat))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(chSenin)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(chKamis)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbJadwal, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfNIM, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chKalkulus)
+                                    .addComponent(chEnglish)
+                                    .addComponent(chJarkom)
+                                    .addComponent(chPBO)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(chSelasa)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(chJumat))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(chSenin)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(chKamis))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel10))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jtRuang)
+                                        .addComponent(cbJadwal, 0, 135, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel11)
+                                        .addComponent(jLabel12))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jtMatkul)
+                                        .addComponent(jtHari)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(122, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -276,11 +319,23 @@ public class tes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chRabu)
                     .addComponent(chSabtu))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cbJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(158, 158, 158)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtRuang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtHari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jtMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80)
                 .addComponent(btnAdd)
                 .addContainerGap())
         );
@@ -369,25 +424,29 @@ public class tes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNIMActionPerformed
 
-    private void chKalkulusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chKalkulusActionPerformed
+    private void cbJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJadwalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_chKalkulusActionPerformed
+        try{
+            String sql = "select id_jadwal from jadwal";
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                jtHari.setText(rs.getString("hari"));
+                jtMatkul.setText(rs.getString("matkul"));
+                jtRuang.setText(rs.getString("ruang"));
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }//GEN-LAST:event_cbJadwalActionPerformed
 
-    private void chPBOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chPBOActionPerformed
+    private void jtHariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtHariActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_chPBOActionPerformed
+    }//GEN-LAST:event_jtHariActionPerformed
 
-    private void chJarkomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chJarkomActionPerformed
+    private void jtMatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtMatkulActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_chJarkomActionPerformed
-
-    private void chEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chEnglishActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chEnglishActionPerformed
-
-    private void chSeninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chSeninActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chSeninActionPerformed
+    }//GEN-LAST:event_jtMatkulActionPerformed
 
     private void chSelasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chSelasaActionPerformed
         // TODO add your handling code here:
@@ -397,21 +456,37 @@ public class tes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_chRabuActionPerformed
 
-    private void chKamisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chKamisActionPerformed
+    private void chSabtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chSabtuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_chKamisActionPerformed
+    }//GEN-LAST:event_chSabtuActionPerformed
 
     private void chJumatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chJumatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chJumatActionPerformed
 
-    private void chSabtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chSabtuActionPerformed
+    private void chKamisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chKamisActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_chSabtuActionPerformed
+    }//GEN-LAST:event_chKamisActionPerformed
 
-    private void cbJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJadwalActionPerformed
+    private void chSeninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chSeninActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbJadwalActionPerformed
+    }//GEN-LAST:event_chSeninActionPerformed
+
+    private void chEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chEnglishActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chEnglishActionPerformed
+
+    private void chJarkomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chJarkomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chJarkomActionPerformed
+
+    private void chPBOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chPBOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chPBOActionPerformed
+
+    private void chKalkulusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chKalkulusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chKalkulusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -543,6 +618,9 @@ public class tes extends javax.swing.JFrame {
     private javax.swing.JCheckBox chSelasa;
     private javax.swing.JCheckBox chSenin;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -555,6 +633,9 @@ public class tes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jtHari;
+    private javax.swing.JTextField jtMatkul;
+    private javax.swing.JTextField jtRuang;
     private javax.swing.JList<String> listMatkul;
     private javax.swing.JTextField tfKelas;
     private javax.swing.JTextField tfNIM;

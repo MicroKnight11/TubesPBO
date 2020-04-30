@@ -427,13 +427,15 @@ public class tes extends javax.swing.JFrame {
     private void cbJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJadwalActionPerformed
         // TODO add your handling code here:
         try{
-            String sql = "select id_jadwal from jadwal";
+            String sql = "SELECT waktu, no_ruangan, nama_mat FROM jadwal"
+                    + "NATURAL JOIN mata_kuliah"
+                    + "WHERE id_jadwal = '"+/*masukin nama cekbox yang kepilih*/ +"'";
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
             while(rs.next()){
-                jtHari.setText(rs.getString("hari"));
-                jtMatkul.setText(rs.getString("matkul"));
-                jtRuang.setText(rs.getString("ruang"));
+                jtHari.setText(rs.getString("waktu"));
+                jtMatkul.setText(rs.getString("kode_mk"));
+                jtRuang.setText(rs.getString("no_ruang"));
             }
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex);

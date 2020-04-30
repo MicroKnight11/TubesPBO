@@ -76,7 +76,7 @@ public class Matkul {
             ModelMatkul m;
             while (db.getRs().next()) {
                 m = new ModelMatkul(
-                    db.getRs().getString("KD_MK"),
+                    db.getRs().getString("kode_MK"),
                     db.getRs().getString("nama_MK"),
                     db.getRs().getString("SKS")
                 );

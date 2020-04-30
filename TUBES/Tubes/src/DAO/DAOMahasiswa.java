@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Database.Database;
+import Model.Database;
 import java.sql.SQLException;
 
 /**

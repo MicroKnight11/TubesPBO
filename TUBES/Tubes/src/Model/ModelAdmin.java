@@ -19,7 +19,6 @@ public class ModelAdmin {
 
     public ModelAdmin() {
         this.Mk = new ArrayList<>();
-    
     }
    
     public void addMatkul(ModelMatkul e){

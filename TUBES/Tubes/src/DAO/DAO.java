@@ -1,7 +1,7 @@
 package DAO;
 
 
-import Database.Database;
+import Model.Database;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

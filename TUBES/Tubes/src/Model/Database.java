@@ -1,50 +1,53 @@
-package tubes;
+package Model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+import java.sql.*;
+
+/**
+ *
+ * @author satria
+ */
 public class Database {
-    private String server = "jdbc:mysql://TubesPBOsql";//nama database
-    private String dbuser = "root";
-    private String dbpasswd = "";
-    private Statement statement = null;
-    private Connection connection = null;
-    private ResultSet rs = null;
+
+    private static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
+    private static final String DB_URL = "jdbc:oracle:thin:@localhost:1521/XE";
+    private static final String USER = "PBO";
+    private static final String PASS = "tubes";
     
-    public Database() { 
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-        }catch(Exception e){
-            System.out.println("Error: " + e.getMessage());
-        }
-        connect();
-    }
-    public void connect() { 
-        try {
-            connection = DriverManager.getConnection(server, dbuser, dbpasswd);
-            statement = connection.createStatement();
-        } catch (Exception e) {
-            throw new IllegalArgumentException("terjadi kesalahan saat koneksi");
-        }
+    private static Connection conn;
+    private static Statement stmt;
+    private static ResultSet rs;
+    
+    public void connect() throws SQLException, ClassNotFoundException{
+        Class.forName(JDBC_DRIVER);
+        conn = DriverManager.getConnection(DB_URL,USER,PASS);
+        stmt = conn.createStatement();
     }
     
-    public ResultSet getData(String str) { 
-        try{
-            rs = statement.executeQuery(str);
-        }catch(Exception e){
-            System.out.println("Error: " + e.getMessage());
-        }
+    public void disconnect() throws SQLException {
+        stmt.close();
+        conn.close();
+    }
+    
+    public Connection getConn() {
+        return conn;
+    }
+
+    public ResultSet getRs() {
         return rs;
     }
     
-    public void query(String str) { 
-        try{
-            statement.executeUpdate(str);
-        }catch(Exception e){
-            System.out.println("Error: " + e.getMessage());
-        }
+    public Statement getStmt() {
+        return stmt;
     }
-   
+
+    public static void setRs(ResultSet rs) {
+        Database.rs = rs;
+    }
+
 }

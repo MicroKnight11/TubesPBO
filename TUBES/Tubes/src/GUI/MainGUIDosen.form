@@ -141,10 +141,12 @@
                       <Component id="jTextFieldFirstName" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLLast" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jBDelete" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLLast" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" pref="349" max="-2" attributes="0"/>

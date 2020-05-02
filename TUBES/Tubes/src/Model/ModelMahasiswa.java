@@ -37,6 +37,12 @@ import javax.swing.JOptionPane;
         public void setNim(String nim) {
             this.nim = nim;
         }
+        
+        public void addMatkul() {
+            
+        }
+        
+        public void deleteMatkul() {
     }  
     
 //    public Mahasiswa(Database a) {

@@ -50,21 +50,9 @@ public class tes extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         tfNama = new javax.swing.JTextField();
         tfKelas = new javax.swing.JTextField();
         tfNIM = new javax.swing.JTextField();
-        chKalkulus = new javax.swing.JCheckBox();
-        chPBO = new javax.swing.JCheckBox();
-        chJarkom = new javax.swing.JCheckBox();
-        chEnglish = new javax.swing.JCheckBox();
-        chSenin = new javax.swing.JCheckBox();
-        chSelasa = new javax.swing.JCheckBox();
-        chRabu = new javax.swing.JCheckBox();
-        chKamis = new javax.swing.JCheckBox();
-        chJumat = new javax.swing.JCheckBox();
-        chSabtu = new javax.swing.JCheckBox();
         btnAdd = new javax.swing.JButton();
         cbJadwal = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -93,10 +81,6 @@ public class tes extends javax.swing.JFrame {
 
         jLabel7.setText("KELAS            :");
 
-        jLabel8.setText("Pilihan Matkul :");
-
-        jLabel9.setText("Hari               :");
-
         tfNama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfNamaActionPerformed(evt);
@@ -115,76 +99,6 @@ public class tes extends javax.swing.JFrame {
             }
         });
 
-        chKalkulus.setText("Kalkulus");
-        chKalkulus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chKalkulusActionPerformed(evt);
-            }
-        });
-
-        chPBO.setText("PBO");
-        chPBO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chPBOActionPerformed(evt);
-            }
-        });
-
-        chJarkom.setText("Jarkom");
-        chJarkom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chJarkomActionPerformed(evt);
-            }
-        });
-
-        chEnglish.setText("English");
-        chEnglish.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chEnglishActionPerformed(evt);
-            }
-        });
-
-        chSenin.setText("Senin");
-        chSenin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chSeninActionPerformed(evt);
-            }
-        });
-
-        chSelasa.setText("Selasa");
-        chSelasa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chSelasaActionPerformed(evt);
-            }
-        });
-
-        chRabu.setText("Rabu");
-        chRabu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chRabuActionPerformed(evt);
-            }
-        });
-
-        chKamis.setText("Kamis");
-        chKamis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chKamisActionPerformed(evt);
-            }
-        });
-
-        chJumat.setText("Jumat");
-        chJumat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chJumatActionPerformed(evt);
-            }
-        });
-
-        chSabtu.setText("Sabtu");
-        chSabtu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chSabtuActionPerformed(evt);
-            }
-        });
-
         btnAdd.setText("Add");
 
         cbJadwal.addActionListener(new java.awt.event.ActionListener() {
@@ -193,13 +107,13 @@ public class tes extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Jadwal         :");
+        jLabel2.setText("Jadwal           :");
 
         jtRuang.setEditable(false);
 
-        jLabel10.setText("Ruangan      :");
+        jLabel10.setText("Ruangan        :");
 
-        jLabel11.setText("Hari             :");
+        jLabel11.setText("Hari               :");
 
         jtHari.setEditable(false);
         jtHari.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +122,7 @@ public class tes extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setText("Matkul         :");
+        jLabel12.setText("Matkul            :");
 
         jtMatkul.setEditable(false);
         jtMatkul.addActionListener(new java.awt.event.ActionListener() {
@@ -221,66 +135,37 @@ public class tes extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAdd)
-                .addGap(78, 78, 78))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(chRabu)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(chSabtu))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfNIM, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(chKalkulus)
-                                    .addComponent(chEnglish)
-                                    .addComponent(chJarkom)
-                                    .addComponent(chPBO)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(6, 6, 6)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(chSelasa)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(chJumat))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(chSenin)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(chKamis))))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel10))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jtRuang)
-                                        .addComponent(cbJadwal, 0, 135, Short.MAX_VALUE)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel11)
-                                        .addComponent(jLabel12))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtMatkul)
-                                        .addComponent(jtHari)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(tfNIM, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtRuang, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                            .addComponent(cbJadwal, 0, 135, Short.MAX_VALUE)
+                            .addComponent(jtHari)
+                            .addComponent(jtMatkul))))
                 .addContainerGap(122, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAdd)
+                .addGap(21, 21, 21))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,45 +182,23 @@ public class tes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfKelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(chKalkulus))
+                    .addComponent(cbJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chPBO)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chJarkom)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chEnglish)
-                .addGap(9, 9, 9)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(chSenin)
-                    .addComponent(chKamis))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chSelasa)
-                    .addComponent(chJumat))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chRabu)
-                    .addComponent(chSabtu))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cbJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtRuang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtHari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel11)
+                    .addComponent(jtHari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jtMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(80, 80, 80)
+                    .addComponent(jtMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(54, 54, 54)
                 .addComponent(btnAdd)
                 .addContainerGap())
         );
@@ -366,7 +229,7 @@ public class tes extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane3)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         jLabel1.setText("IDENTITAS");
@@ -450,46 +313,6 @@ public class tes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtMatkulActionPerformed
 
-    private void chSelasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chSelasaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chSelasaActionPerformed
-
-    private void chRabuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chRabuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chRabuActionPerformed
-
-    private void chSabtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chSabtuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chSabtuActionPerformed
-
-    private void chJumatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chJumatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chJumatActionPerformed
-
-    private void chKamisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chKamisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chKamisActionPerformed
-
-    private void chSeninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chSeninActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chSeninActionPerformed
-
-    private void chEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chEnglishActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chEnglishActionPerformed
-
-    private void chJarkomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chJarkomActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chJarkomActionPerformed
-
-    private void chPBOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chPBOActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chPBOActionPerformed
-
-    private void chKalkulusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chKalkulusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chKalkulusActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -552,24 +375,6 @@ public class tes extends javax.swing.JFrame {
     public JButton getBtnAdd() {
         return btnAdd;
     }
-
-    
-    public ArrayList<String> getMatkul(){
-        ArrayList<String> s = new ArrayList();
-        if (chKalkulus.isSelected()) {
-            s.add(chKalkulus.getText());
-        }
-        if (chPBO.isSelected()) {
-            s.add(chPBO.getText());
-        }
-        if (chJarkom.isSelected()) {
-            s.add(chJarkom.getText());
-        }
-        if (chEnglish.isSelected()) {
-            s.add(chEnglish.getText());
-        }
-        return s;
-    }
     
     public int getSelectedPeserta(){
         return listMatkul.getSelectedIndex();
@@ -586,10 +391,6 @@ public class tes extends javax.swing.JFrame {
         tfNama.setText("");
         tfNIM.setText("");
         tfKelas.setText("");
-        chKalkulus.setSelected(false);
-        chPBO.setSelected(false);
-        chJarkom.setSelected(false);
-        chEnglish.setSelected(false);
         listMatkul.clearSelection();
     }
     
@@ -609,16 +410,6 @@ public class tes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JComboBox<String> cbJadwal;
-    private javax.swing.JCheckBox chEnglish;
-    private javax.swing.JCheckBox chJarkom;
-    private javax.swing.JCheckBox chJumat;
-    private javax.swing.JCheckBox chKalkulus;
-    private javax.swing.JCheckBox chKamis;
-    private javax.swing.JCheckBox chPBO;
-    private javax.swing.JCheckBox chRabu;
-    private javax.swing.JCheckBox chSabtu;
-    private javax.swing.JCheckBox chSelasa;
-    private javax.swing.JCheckBox chSenin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -629,8 +420,6 @@ public class tes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;

@@ -18,8 +18,9 @@ public class Coba {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Database db = new Database();
-        Mahasiswa a = new Mahasiswa(db);
+        new Controller();
+//        Database db = new Database();
+//        Mahasiswa a = new Mahasiswa(db);
 //        Mahasiswa.ModelMahasiswa b = a.new ModelMahasiswa("130184047", "Satria", "15-03-2000");
 //        a.addMahasiswa(b);
     }

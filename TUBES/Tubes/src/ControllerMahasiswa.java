@@ -26,6 +26,6 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-
+        
     }
 }

@@ -5,7 +5,6 @@
  */
 package Model;
 
-import Model.Matkul.ModelMatkul;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -15,16 +14,16 @@ import java.util.logging.Logger;
  *
  * @author R O G
  */
-public class Dosen {
-    private Database db;
-    private String sql;
-    private ArrayList<ModelDosen> listDosen = new ArrayList();
-    
+//public class Dosen {
+
+//    private ArrayList<ModelDosen> listDosen = new ArrayList();
+//    
     public class ModelDosen extends Human{
         private String KK;
         private String NID;
-        private ModelMatkul listMatKul;
-    
+        private Database db;
+        private String sql; 
+        
         public ModelDosen(String NID, String KK, String nama, String tanggalLahir) {
             super(nama, tanggalLahir);
             this.KK = KK;
@@ -46,51 +45,65 @@ public class Dosen {
         public void setNID(String NID) {
             this.NID = NID;
         }
-    }
-    public Dosen(Database a) {
-        db = a;
-        try {
-            db.connect();
-            sql = "SELECT * FROM dosen";
-            db.setRs(db.getStmt().executeQuery(sql));
-            ModelDosen m;
-            while (db.getRs().next()) {
-                m = new ModelDosen(
-                    db.getRs().getString("nik"),
-                    db.getRs().getString("kelompok_keahlian"),
-                    db.getRs().getString("nama"),
-                    db.getRs().getString("tgl_lahir")
-                );
-                listDosen.add(m);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();;
+        
+        public void liatJadwal(String id_jadwal) {
+            try{
+                db.connect();
+                sql = "SELECT * FROM jadwal WHERE id_jadwal = '" + id_jadwal +"';";
+                db.setRs(db.getStmt().executeQuery(sql));
+                
+                db.disconnect();
+            } catch (SQLException ex) {
+                Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            }           
         }
     }
-    public void addDosen(ModelDosen m) {
-        try {
-            db.connect();
-            sql = "INSERT INTO dosen VALUES('" + m.getNID() + "','" + m.getNama() + "','"+m.getKK()+"','"+m.getTanggalLahir()+"')";
-            db.setRs(db.getStmt().executeQuery(sql));
-            System.out.println("Insert success");
-            db.disconnect();
-        } catch (SQLException ex) {
-            Logger.getLogger(Dosen.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Dosen.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void deleteDosen(ModelDosen m) {
-        try {
-            db.connect();
-            sql = "DELETE FROM dosen WHERE nik = '" + m.NID + "'";
-            db.setRs(db.getStmt().executeQuery(sql));
-            db.disconnect();
-        } catch (SQLException ex) {
-            Logger.getLogger(Dosen.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Dosen.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-}
+//    public Dosen(Database a) {
+//        db = a;
+//        try {
+//            db.connect();
+//            sql = "SELECT * FROM dosen";
+//            db.setRs(db.getStmt().executeQuery(sql));
+//            ModelDosen m;
+//            while (db.getRs().next()) {
+//                m = new ModelDosen(
+//                    db.getRs().getString("nik"),
+//                    db.getRs().getString("kelompok_keahlian"),
+//                    db.getRs().getString("nama"),
+//                    db.getRs().getString("tgl_lahir")
+//                );
+//                listDosen.add(m);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();;
+//        }
+//    }
+//    public void addDosen(ModelDosen m) {
+//        try {
+//            db.connect();
+//            sql = "INSERT INTO dosen VALUES('" + m.getNID() + "','" + m.getNama() + "','"+m.getKK()+"','"+m.getTanggalLahir()+"')";
+//            db.setRs(db.getStmt().executeQuery(sql));
+//            System.out.println("Insert success");
+//            db.disconnect();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Dosen.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(Dosen.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//    
+//    public void deleteDosen(ModelDosen m) {
+//        try {
+//            db.connect();
+//            sql = "DELETE FROM dosen WHERE nik = '" + m.NID + "'";
+//            db.setRs(db.getStmt().executeQuery(sql));
+//            db.disconnect();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Dosen.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(Dosen.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//}

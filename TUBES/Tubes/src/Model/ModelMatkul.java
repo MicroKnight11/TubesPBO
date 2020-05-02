@@ -14,26 +14,50 @@ import javax.swing.JOptionPane;
  *
  * @author R O G
  */
-public class Matkul {
-    private Database db;
-    private String sql;
-   // private Statement stat;
-    private ArrayList<ModelMatkul> listMatkul = new ArrayList();
+//public class Matkul {
+//    private Database db;
+//    private String sql;
+//   // private Statement stat;
+//    private ArrayList<ModelMatkul> listMatkul = new ArrayList();
     
     public class ModelMatkul {
+        private Database db;
+        private String sql;
         private String KD_MK;
         private String nama_MK;
         private String SKS;
-        private Dosen Dsn;
-        //private ArrayList<ModelMahasiswa> listMhs;
+        private ModelDosen Dsn;
         
-        public ModelMatkul(String KD_MK, String nama_MK, String SKS) {
+        public ModelMatkul(String KD_MK, String nama_MK, String SKS, ModelDosen Dsn) {
             this.KD_MK = KD_MK;
             this.nama_MK = nama_MK;
             this.SKS = SKS;
-            //listMhs = new ArrayList();
+            this.Dsn = Dsn;
         }
-
+        
+        public ModelMatkul(String KD_MK, String nama_MK, String SKS, String nid) {
+            this.KD_MK = KD_MK;
+            this.nama_MK = nama_MK;
+            this.SKS = SKS;
+            try {
+                db.connect();
+                sql = "SELECT * FROM dosen where nid = '"+nid+"';";
+                db.setRs(db.getStmt().executeQuery(sql));
+                ModelDosen m;
+                while (db.getRs().next()) {
+                    m = new ModelDosen(
+                        db.getRs().getString("nid"),
+                        db.getRs().getString("kelompok_keahlian"),
+                        db.getRs().getString("nama_dosen"),
+                        db.getRs().getString("tgl_lahir")
+                    );
+                Dsn = m;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();;
+            }            
+        }
+        
         public String getKD_MK() {
             return KD_MK;
         }
@@ -58,70 +82,70 @@ public class Matkul {
             this.SKS = SKS;
         }
 
-        public Dosen getDsn() {
+        public ModelDosen getDsn() {
             return Dsn;
         }
 
-        public void setDsn(Dosen Dsn) {
+        public void setDsn(ModelDosen Dsn) {
             this.Dsn = Dsn;
         }
     }
     
-     public Matkul (Database a) {
-        db = a;
-        try {
-            db.connect();
-            sql = "SELECT * FROM matkul";
-            db.setRs(db.getStmt().executeQuery(sql));
-            ModelMatkul m;
-            while (db.getRs().next()) {
-                m = new ModelMatkul(
-                    db.getRs().getString("kode_MK"),
-                    db.getRs().getString("nama_MK"),
-                    db.getRs().getString("SKS")
-                );
-                listMatkul.add(m);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();;
-        }
-    }
-    
-    public void addMatkul(ModelMatkul m){
-        //boolean value = false;
-        try{   
-            db.connect();
-            sql = "INSERT INTO matkul VALUES('" + m.getKD_MK()+ "','" + m.getNama_MK() +"','"+ m.getSKS() +"')";
-            db.setRs(db.getStmt().executeQuery(sql));
-            db.disconnect();
-            listMatkul.add(m);
-            //value = true;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Penyimpanan Gagal, "+e.getMessage());
-        }
-        //return value;
-    }
-    
-    public void deleteMatkul(ModelMatkul m){
-        //boolean value = false;
-        try{   
-            db.connect();
-            sql = "DELETE FROM matkul WHERE KD_MK = '" + m.getKD_MK() + "'";
-            db.setRs(db.getStmt().executeQuery(sql));
-            db.disconnect();
-            listMatkul.remove(m);
-            //value = true;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Delete Gagal, "+e.getMessage());
-        }
-        //return value;
-    }
-    
-//     public ArrayList<ModelMatkul> getListMatkul() {
-//        return listMahatkul;
+//     public Matkul (Database a) {
+//        db = a;
+//        try {
+//            db.connect();
+//            sql = "SELECT * FROM matkul";
+//            db.setRs(db.getStmt().executeQuery(sql));
+//            ModelMatkul m;
+//            while (db.getRs().next()) {
+//                m = new ModelMatkul(
+//                    db.getRs().getString("kode_MK"),
+//                    db.getRs().getString("nama_MK"),
+//                    db.getRs().getString("SKS")
+//                );
+//                listMatkul.add(m);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();;
+//        }
 //    }
-
-    public void setListMatkul(ArrayList<ModelMatkul> listMatkul) {
-        this.listMatkul = listMatkul;
-    }
-}
+//    
+//    public void addMatkul(ModelMatkul m){
+//        //boolean value = false;
+//        try{   
+//            db.connect();
+//            sql = "INSERT INTO matkul VALUES('" + m.getKD_MK()+ "','" + m.getNama_MK() +"','"+ m.getSKS() +"')";
+//            db.setRs(db.getStmt().executeQuery(sql));
+//            db.disconnect();
+//            listMatkul.add(m);
+//            //value = true;
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Penyimpanan Gagal, "+e.getMessage());
+//        }
+//        //return value;
+//    }
+//    
+//    public void deleteMatkul(ModelMatkul m){
+//        //boolean value = false;
+//        try{   
+//            db.connect();
+//            sql = "DELETE FROM matkul WHERE KD_MK = '" + m.getKD_MK() + "'";
+//            db.setRs(db.getStmt().executeQuery(sql));
+//            db.disconnect();
+//            listMatkul.remove(m);
+//            //value = true;
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Delete Gagal, "+e.getMessage());
+//        }
+//        //return value;
+//    }
+//    
+////     public ArrayList<ModelMatkul> getListMatkul() {
+////        return listMahatkul;
+////    }
+//
+//    public void setListMatkul(ArrayList<ModelMatkul> listMatkul) {
+//        this.listMatkul = listMatkul;
+//    }
+//}

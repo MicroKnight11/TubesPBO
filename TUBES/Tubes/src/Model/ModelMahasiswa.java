@@ -7,7 +7,8 @@ package Model;
 //import java.sql.Statement;
 //import java.util.ArrayList;
 //import javax.swing.JOptionPane;
-import Model.Matkul.ModelMatkul;
+import Model.ModelMatkul;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.*;
 import javax.swing.JOptionPane;
@@ -21,6 +22,8 @@ import javax.swing.JOptionPane;
 //    private ArrayList<ModelMahasiswa> listMahasiswa = new ArrayList();
     
     public class ModelMahasiswa extends Human{
+        private Database db;
+        private String sql;
         private String nim;
         private ArrayList<ModelMatkul> listMatKul;
         
@@ -38,11 +41,29 @@ import javax.swing.JOptionPane;
             this.nim = nim;
         }
         
-        public void addMatkul() {
-            
+        public void addMatkul(String id_jadwal) {
+            try {
+            db.connect();
+            sql = "SELECT kode_mk, nama_mk, sks, nid FROM jadwal"
+                    + "natural join mata_kuliah"
+                    + "where id_jadwal = '" +id_jadwal+"';";
+            db.setRs(db.getStmt().executeQuery(sql));
+            while (db.getRs().next()) {
+                ModelMatkul m = new ModelMatkul(
+                    db.getRs().getString("kode_MK"),
+                    db.getRs().getString("nama_MK"),
+                    db.getRs().getString("SKS"),
+                    db.getRs().getString("nid")
+                );
+                listMatKul.add(m);
+            }
+            db.disconnect();
+            } catch (SQLException ex) {
+                Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        
-        public void deleteMatkul() {
     }  
     
 //    public Mahasiswa(Database a) {

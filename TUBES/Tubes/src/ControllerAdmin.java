@@ -15,18 +15,19 @@ import java.awt.event.MouseAdapter;
  *
  * @author satria
  */
-public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
-    private tes view;
+public class ControllerAdmin extends MouseAdapter implements ActionListener {
+    private GUIAdmin view;
     
-    public ControllerMahasiswa(Database db) {
-        view = new tes(db);
+    public ControllerAdmin(Database db){
+        view = new GUIAdmin(db);
         view.addActionListener(this);
         view.addMouseAdapter(this);
         view.setVisible(true);
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }

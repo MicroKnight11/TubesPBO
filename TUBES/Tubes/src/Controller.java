@@ -8,15 +8,18 @@
  * @author satria
  */
 import GUI.login;
+import Model.Database;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Controller implements ActionListener{
     private login view;
+    private Database db;
     
     public Controller() {
         view = new login();
         view.addActionListener(this);
         view.setVisible(true);
+        db = new Database();
     }
 
     @Override
@@ -24,16 +27,16 @@ public class Controller implements ActionListener{
         Object source = ae.getSource();
         if (source.equals(view.getBtnLogin())) {
             if (view.getUser() == "Mahasiswa") {
-                new ControllerMahasiswa();.
                 view.setVisible(false);
+                new ControllerMahasiswa(db);
             }
-            if else (view.getUser() == "Dosen") {
-                new ControllerDosen;
+            else if (view.getUser() == "Dosen") {
                 view.setVisible(false);
+                new ControllerDosen(db);
             }
-            if else (view.getUser() == "Admin") {
-                new ControllerAdmin;
+            else if (view.getUser() == "Admin") {
                 view.setVisible(false);
+                new ControllerAdmin(db);
             }
         }
     }    

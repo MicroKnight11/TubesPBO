@@ -1,9 +1,9 @@
 
-import GUI.tes;
 import Model.Database;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import tubes.MainGUIDosen;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,18 +15,17 @@ import java.awt.event.MouseAdapter;
  *
  * @author satria
  */
-public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
-    private tes view;
+public class ControllerDosen implements ActionListener{
+    private MainGUIDosen view;
     
-    public ControllerMahasiswa(Database db) {
-        view = new tes(db);
+    public ControllerDosen(Database db) {
+        view = new MainGUIDosen(db);
         view.addActionListener(this);
-        view.addMouseAdapter(this);
         view.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
+
     }
 }

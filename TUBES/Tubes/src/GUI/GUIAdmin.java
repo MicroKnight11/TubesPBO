@@ -1,3 +1,6 @@
+
+import Model.Database;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +13,12 @@
  * @author satria
  */
 public class GUIAdmin extends javax.swing.JPanel {
-
+    private Database db;
     /**
      * Creates new form GUIAdmin
      */
-    public GUIAdmin() {
+    public GUIAdmin(Database db) {
+        this.db = db;
         initComponents();
     }
 
@@ -301,4 +305,14 @@ public class GUIAdmin extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbPBO;
     private javax.swing.JTextField txJadwal;
     // End of variables declaration//GEN-END:variables
+
+    void addActionListener(ControllerAdmin e) {
+        btnAdd.addActionListener(e);
+        btnDelete.addActionListener(e);
+    }
+
+    void addMouseAdapter(ControllerAdmin e) {
+        listJadwal.addMouseListener(e);
+    }
+
 }

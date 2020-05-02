@@ -9,6 +9,7 @@ package GUI;
  *
  * @author user
  */
+import Model.Database;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.sql.Connection;
@@ -28,11 +29,14 @@ public class tes extends javax.swing.JFrame {
     /**
      * Creates new form tes
      */
-    Connection con = null;
-    Statement stmt = null;
-    ResultSet rs = null;
+    private Database db;
+    private String sql;
+//    Connection con = null;
+//    Statement stmt = null;
+//    ResultSet rs = null;
     
-    public tes() {
+    public tes(Database db) {
+        this.db = db;
         initComponents();
         combobox();
     }
@@ -289,20 +293,20 @@ public class tes extends javax.swing.JFrame {
 
     private void cbJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJadwalActionPerformed
         // TODO add your handling code here:
-//        try{
-//            String sql = "SELECT * FROM jadwal"
-//                    + "NATURAL JOIN mata_kuliah"
-//                    + "WHERE id_jadwal = '"+ getCbJadwal() +"'";
-//            stmt = con.createStatement();
-//            rs = stmt.executeQuery(sql);
-//            while(rs.next()){
-//                jtHari.setText(rs.getString("waktu"));
-//                jtMatkul.setText(rs.getString("kode_mk"));
-//                jtRuang.setText(rs.getString("no_ruang"));
-//            }
-//        }catch(Exception ex){
-//            JOptionPane.showMessageDialog(null, ex);
-//        }
+        try{
+            db.connect();
+            sql = "SELECT * FROM jadwal"
+                    + "NATURAL JOIN mata_kuliah"
+                    + "WHERE id_jadwal = '"+ getCbJadwal() +"'";
+            db.setRs(db.getStmt().executeQuery(sql));
+            while(db.getRs().next()){
+                jtHari.setText(db.getRs().getString("waktu"));
+                jtMatkul.setText(db.getRs().getString("kode_mk"));
+                jtRuang.setText(db.getRs().getString("no_ruang"));
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
     }//GEN-LAST:event_cbJadwalActionPerformed
 
     private void jtHariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtHariActionPerformed
@@ -346,15 +350,20 @@ public class tes extends javax.swing.JFrame {
     }
     private void combobox(){
         try{
-            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE", "PBO", "tubes");//link sql
-            String sql = "select id_jadwal from jadwal";
-            stmt = con.createStatement();
-            rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                String name = rs.getString("id_jadwal");
+            db.connect();
+            sql = "select id_jadwal from jadwal";
+            db.setRs(db.getStmt().executeQuery(sql));
+//            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE", "PBO", "tubes");//link sql
+//            String sql = "select id_jadwal from jadwal";
+//            stmt = con.createStatement();
+//            rs = stmt.executeQuery(sql);
+            while(db.getRs().next()){
+                String name = db.getRs().getString("id_jadwal");
                 cbJadwal.addItem(name); 
             }
-            
+            db.disconnect();
+//            stmt.close();
+//            con.close();
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex);
         }

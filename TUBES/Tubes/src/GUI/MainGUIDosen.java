@@ -5,6 +5,7 @@
  */
 package tubes;
 
+import Model.Database;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
@@ -18,11 +19,12 @@ import javax.swing.table.DefaultTableModel;
  * @author R O G
  */
 public class MainGUIDosen extends javax.swing.JFrame {
-
+    private Database db;
     /**
      * Creates new form MainGUIDosen
      */
-    public MainGUIDosen() {
+    public MainGUIDosen(Database db) {
+        this.db = db;
         initComponents();
     }
 

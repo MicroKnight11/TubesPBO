@@ -159,6 +159,10 @@ public class login extends javax.swing.JFrame {
             userPass.setText("");
             userID.setSelectedIndex(0);
         }
+
+        public JButton getBtnLogin() {
+            return btnLogin;
+        }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

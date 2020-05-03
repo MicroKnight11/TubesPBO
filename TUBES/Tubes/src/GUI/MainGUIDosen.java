@@ -185,7 +185,7 @@ public class MainGUIDosen extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
-     */public JButton getBtnTambah() {
+     */public JButton getBtnCari() {
         return jBCreateDosen;
     }
 

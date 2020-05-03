@@ -16,16 +16,59 @@ import tubes.MainGUIDosen;
  * @author satria
  */
 public class ControllerDosen implements ActionListener{
-    private MainGUIDosen view;
+    Database db;
+    //Dosen dosen;  
+    //private ArrayList<Dosen> listDosen = new ArrayList();
+    ResultSet rs;
     
-    public ControllerDosen(Database db) {
-        view = new MainGUIDosen(db);
-        view.addActionListener(this);
-        view.setVisible(true);
+    public ControllerDosen(Dosen dsn) {
+        viewDosen = new MainGUIDosen();
+        viewDosen.setVisible(true);
+        viewDosen.addActionListener(this);    
+        db = new Database();
+        this.dosen = dsn;
+        getlistData();
+        viewDosen.setDataDosen(listDosen);
+    } 
+    
+    public void getlistData(){
+        try{
+            ResultSet rs = db.getData("select * from dosen");
+            listDosen.removeAll(listDosen);
+            while(rs.next()){
+                Dosen dsn = new Dosen(rs.getString("NIDN"), rs.getString("Name"));
+                listDosen.add(dsn);
+                        
+            }
+        }catch(Exception e){
+            System.out.println("Error refresh"+e.getMessage());
+        }
     }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-
+    
+    public void actionPerformed(ActionEvent e) {
+        Object source = e.getSource();
+        try {
+            if (source.equals(viewDosen.getBtn_back())) {
+                new MainControllerHome();
+                viewDosen.dispose();
+            } 
+            else if (source.equals(viewDosen.getBtnCari())) {
+                getlistData();
+                try {
+                    if (viewDosen.getjTextFieldNID().getText().equals("")){
+                        JOptionPane.showMessageDialog(null, "NIDN harus diisi terlebih dahulu");
+                    } else {
+                        String NID = viewDosen.getjTextFieldNID().getText();
+                        String dsn = "SELECT FROM dosen WHERE NIDN ='"+NID+"'";
+                        viewDosen.setDataDosen(db.query(dsn));
+                    }
+                } catch (Exception es) {
+                    System.out.println("Error 404 "+ es.getMessage());
+                    JOptionPane.showMessageDialog(null, "Data Dosen Tidak DItemukan");
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Data Dosen Tidak DItemukan");
+        }
     }
 }

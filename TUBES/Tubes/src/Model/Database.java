@@ -7,6 +7,7 @@ package Model;
  */
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,7 +23,20 @@ public class Database {
     private static Connection conn;
     private static Statement stmt;
     private static ResultSet rs;
+    private String sql;
     
+    private ArrayList<ModelRuangan> listRuangan = new ArrayList();
+    private ArrayList<ModelDosen> listDosen = new ArrayList();
+    private ArrayList<ModelMahasiswa> listMahasiswa = new ArrayList();
+    private ArrayList<ModelMatkul> listMatkul = new ArrayList();
+    
+    public Database() {
+        loadDosen();
+        loadMahasiswa();
+        loadMatkul();
+        loadRuangan();
+    }
+
     public void connect() throws SQLException, ClassNotFoundException{
         Class.forName(JDBC_DRIVER);
         conn = DriverManager.getConnection(DB_URL,USER,PASS);
@@ -50,4 +64,89 @@ public class Database {
         Database.rs = rs;
     }
 
+    public void loadDosen() {
+      try {
+            connect();
+            sql = "SELECT * FROM dosen";
+            rs = stmt.executeQuery(sql);
+            ModelDosen m;
+            while (rs.next()) {
+                m = new ModelDosen(
+                    rs.getString("nik"),
+                    rs.getString("kelompok_keahlian"),
+                    rs.getString("nama"),
+                    rs.getString("tgl_lahir")
+                );
+            listDosen.add(m);
+            disconnect();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();;
+        }          
+    }
+
+    public void loadMahasiswa() {
+        try {
+           connect();
+           sql = "SELECT * FROM mahasiswa";
+           rs = stmt.executeQuery(sql);
+           ModelMahasiswa m;
+           while (rs.next()) {
+               m = new ModelMahasiswa(
+                   rs.getString("nim"),
+                   rs.getString("nama"),
+                   rs.getString("tgl_lahir")
+               );
+            listMahasiswa.add(m);
+            disconnect();
+           }
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+    }
+
+    public void loadRuangan() {
+        try {
+           connect();
+           sql = "SELECT * FROM ruangan"
+                   + "natural join gedung";
+           rs = stmt.executeQuery(sql);
+           ModelRuangan m;
+           while (rs.next()) {
+               m = new ModelRuangan(
+                   rs.getString("kode_gedung"),
+                   rs.getString("nama_gedung"),
+                   rs.getString("NO_Ruangan"),
+                   rs.getInt("kapasitas")
+               );
+               listRuangan.add(m);
+               disconnect();
+           }
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+    }
+
+    public void loadMatkul() {
+        try {
+           connect();
+           sql = "SELECT * FROM matkul"
+                   + "natural join dosen";
+           rs = stmt.executeQuery(sql);
+           ModelMatkul m;
+           while (rs.next()) {
+               m = new ModelMatkul(
+                   rs.getString("kode_MK"),
+                   rs.getString("nama_MK"),
+                   rs.getString("SKS"),
+                   rs.getString("nid")
+               );
+            listMatkul.add(m);
+            disconnect();
+           }
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+    }
+    
 }

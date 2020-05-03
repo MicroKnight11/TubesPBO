@@ -78,8 +78,8 @@ public class Database {
                     rs.getString("tgl_lahir")
                 );
             listDosen.add(m);
-            disconnect();
             }
+            disconnect();
         } catch (Exception e) {
             e.printStackTrace();;
         }          
@@ -98,8 +98,8 @@ public class Database {
                    rs.getString("tgl_lahir")
                );
             listMahasiswa.add(m);
-            disconnect();
            }
+           disconnect();
        } catch (Exception e) {
            e.printStackTrace();
        }
@@ -109,7 +109,7 @@ public class Database {
         try {
            connect();
            sql = "SELECT * FROM ruangan"
-                   + "natural join gedung";
+                   + " natural join gedung";
            rs = stmt.executeQuery(sql);
            ModelRuangan m;
            while (rs.next()) {
@@ -119,9 +119,9 @@ public class Database {
                    rs.getString("NO_Ruangan"),
                    rs.getInt("kapasitas")
                );
-               listRuangan.add(m);
-               disconnect();
+            listRuangan.add(m);
            }
+           disconnect();
        } catch (Exception e) {
            e.printStackTrace();
        }
@@ -130,20 +130,20 @@ public class Database {
     public void loadMatkul() {
         try {
            connect();
-           sql = "SELECT * FROM matkul"
-                   + "natural join dosen";
+           sql = "SELECT * FROM mata_kuliah"
+                   + " natural join dosen";
            rs = stmt.executeQuery(sql);
            ModelMatkul m;
            while (rs.next()) {
                m = new ModelMatkul(
                    rs.getString("kode_MK"),
                    rs.getString("nama_MK"),
-                   rs.getString("SKS"),
-                   rs.getString("nid")
+                   rs.getString("SKS")
+                   //rs.getString("nid")
                );
             listMatkul.add(m);
-            disconnect();
            }
+           disconnect();
        } catch (Exception e) {
            e.printStackTrace();
        }

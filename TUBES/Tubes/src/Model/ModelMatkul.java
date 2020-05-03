@@ -28,12 +28,11 @@ import javax.swing.JOptionPane;
         private String SKS;
         private ModelDosen Dsn;
         
-//        public ModelMatkul(String KD_MK, String nama_MK, String SKS, ModelDosen Dsn) {
-//            this.KD_MK = KD_MK;
-//            this.nama_MK = nama_MK;
-//            this.SKS = SKS;
-//            this.Dsn = Dsn;
-//        }
+        public ModelMatkul(String KD_MK, String nama_MK, String SKS) {
+            this.KD_MK = KD_MK;
+            this.nama_MK = nama_MK;
+            this.SKS = SKS;
+        }
         
         public ModelMatkul(String KD_MK, String nama_MK, String SKS, String nid) {
             this.KD_MK = KD_MK;

@@ -113,13 +113,10 @@ public class tes extends javax.swing.JFrame {
 
         jLabel2.setText("Jadwal           :");
 
-        jtRuang.setEditable(false);
-
         jLabel10.setText("Ruangan        :");
 
         jLabel11.setText("Hari               :");
 
-        jtHari.setEditable(false);
         jtHari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtHariActionPerformed(evt);
@@ -128,7 +125,6 @@ public class tes extends javax.swing.JFrame {
 
         jLabel12.setText("Matkul            :");
 
-        jtMatkul.setEditable(false);
         jtMatkul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtMatkulActionPerformed(evt);

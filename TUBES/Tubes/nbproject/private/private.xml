@@ -3,11 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sdzak/Documents/GitHub/TubesPBO/TUBES/Tubes/src/Model/Gedung.java</file>
-            <file>file:/C:/Users/sdzak/Documents/GitHub/TubesPBO/TUBES/Tubes/src/Model/Matkul.java</file>
-            <file>file:/C:/Users/sdzak/Documents/GitHub/TubesPBO/TUBES/Tubes/src/Model/Ruangan.java</file>
-            <file>file:/C:/Users/sdzak/Documents/GitHub/TubesPBO/TUBES/Tubes/src/Model/Mahasiswa.java</file>
-            <file>file:/C:/Users/sdzak/Documents/GitHub/TubesPBO/TUBES/Tubes/src/Model/ModelAdmin.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/GitHub/TubesPBO/TUBES/Tubes/src/Model/ModelAdmin.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/GitHub/TubesPBO/TUBES/Tubes/src/Model/ModelGedung.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/GitHub/TubesPBO/TUBES/Tubes/src/GUI/JavaApplication1.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/GitHub/TubesPBO/TUBES/Tubes/src/GUI/tes.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/GitHub/TubesPBO/TUBES/Tubes/src/ControllerMahasiswa.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/GitHub/TubesPBO/TUBES/Tubes/src/Model/Database.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/GitHub/TubesPBO/TUBES/Tubes/src/Model/ModelDosen.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/GitHub/TubesPBO/TUBES/Tubes/src/GUI/GUIAdmin.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/GitHub/TubesPBO/TUBES/Tubes/src/Model/ModelMahasiswa.java</file>
+            <file>file:/D:/PROGRAMMING/GitHub/GitHub/TubesPBO/TUBES/Tubes/src/Controller.java</file>
         </group>
     </open-files>
 </project-private>

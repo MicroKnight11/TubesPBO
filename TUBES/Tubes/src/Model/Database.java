@@ -72,9 +72,9 @@ public class Database {
             ModelDosen m;
             while (rs.next()) {
                 m = new ModelDosen(
-                    rs.getString("nik"),
+                    rs.getString("nid"),
                     rs.getString("kelompok_keahlian"),
-                    rs.getString("nama"),
+                    rs.getString("nama_dosen"),
                     rs.getString("tgl_lahir")
                 );
             listDosen.add(m);
@@ -94,7 +94,7 @@ public class Database {
            while (rs.next()) {
                m = new ModelMahasiswa(
                    rs.getString("nim"),
-                   rs.getString("nama"),
+                   rs.getString("nama_mhs"),
                    rs.getString("tgl_lahir")
                );
             listMahasiswa.add(m);

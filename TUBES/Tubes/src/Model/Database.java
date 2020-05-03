@@ -148,5 +148,21 @@ public class Database {
            e.printStackTrace();
        }
     }
+
+    public ArrayList<ModelRuangan> getListRuangan() {
+        return listRuangan;
+    }
+
+    public ArrayList<ModelDosen> getListDosen() {
+        return listDosen;
+    }
+
+    public ArrayList<ModelMahasiswa> getListMahasiswa() {
+        return listMahasiswa;
+    }
+
+    public ArrayList<ModelMatkul> getListMatkul() {
+        return listMatkul;
+    }
     
 }

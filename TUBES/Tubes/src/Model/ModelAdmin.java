@@ -31,17 +31,26 @@ public class ModelAdmin {
 //    public void delMatkul(ModelMatkul MK){
 //        this.Mk.remove(MK);
 //    }
-    private Database db;
-    private String sql;
     
-    public void addJadwal(String id_jadwal, String kode_mk, String no_ruangan, String waktu) {
+    public void addJadwal(String id_jadwal, String kode_mk, String no_ruangan, String waktu, Database db) {
         try {
             db.connect();
-            sql = "INSERT INTO jadwal VALUES ('"
+            String sql = "INSERT INTO jadwal VALUES ('"
                     +id_jadwal+"','"
                     +kode_mk+"','"
                     +no_ruangan+"','"
-                    +waktu+"',null);";
+                    +waktu+"',null)";
+            db.setRs(db.getStmt().executeQuery(sql));
+            db.disconnect();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void deleteJadwal(String id_jadwal, Database db) {
+        try{
+            db.connect();
+            String sql = "DELETE FROM jadwal WHERE id_jadwal = '" + id_jadwal +"'";
             db.setRs(db.getStmt().executeQuery(sql));
             db.disconnect();
         } catch (SQLException ex) {
@@ -51,23 +60,10 @@ public class ModelAdmin {
         }
     }
     
-    public void deleteJadwal(String id_jadwal) {
+    public void deleteMahasiswa(String nim, Database db) {
         try{
             db.connect();
-            sql = "DELETE FROM jadwal WHERE id_jadwal = '" + id_jadwal +"';";
-            db.setRs(db.getStmt().executeQuery(sql));
-            db.disconnect();
-        } catch (SQLException ex) {
-            Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void deleteMahasiswa(String nim) {
-        try{
-            db.connect();
-            sql = "DELETE FROM jadwal WHERE nim = '" + nim +"';";
+            String sql = "DELETE FROM jadwal WHERE nim = '" + nim +"';";
             db.setRs(db.getStmt().executeQuery(sql));
             db.disconnect();
         } catch (SQLException ex) {

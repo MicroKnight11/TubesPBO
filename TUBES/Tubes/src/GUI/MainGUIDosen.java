@@ -19,12 +19,10 @@ import javax.swing.table.DefaultTableModel;
  * @author R O G
  */
 public class MainGUIDosen extends javax.swing.JFrame {
-    private Database db;
     /**
      * Creates new form MainGUIDosen
      */
-    public MainGUIDosen(Database db) {
-        this.db = db;
+    public MainGUIDosen() {
         initComponents();
     }
 

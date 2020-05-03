@@ -292,13 +292,13 @@ public class tes extends javax.swing.JFrame {
         try{
             db.connect();
             sql = "SELECT * FROM jadwal"
-                    + "NATURAL JOIN mata_kuliah"
-                    + "WHERE id_jadwal = '"+ getCbJadwal() +"'";
+                    + " NATURAL JOIN mata_kuliah"
+                    + " WHERE id_jadwal = '"+ getCbJadwal() +"'";
             db.setRs(db.getStmt().executeQuery(sql));
             while(db.getRs().next()){
                 jtHari.setText(db.getRs().getString("waktu"));
                 jtMatkul.setText(db.getRs().getString("kode_mk"));
-                jtRuang.setText(db.getRs().getString("no_ruang"));
+                jtRuang.setText(db.getRs().getString("no_ruangan"));
             }
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex);

@@ -39,7 +39,7 @@ public class ModelAdmin {
                     +id_jadwal+"','"
                     +kode_mk+"','"
                     +no_ruangan+"','"
-                    +waktu+"',null)";
+                    +waktu+"')";
             db.setRs(db.getStmt().executeQuery(sql));
             db.disconnect();
         } catch (Exception ex) {

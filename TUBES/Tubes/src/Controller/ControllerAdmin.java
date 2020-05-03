@@ -1,7 +1,6 @@
 package Controller;
 
-
-import GUI.Admin;
+import GUI.GUIAdmin;
 import Model.Database;
 import Model.ModelAdmin;
 import java.awt.event.ActionEvent;
@@ -13,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,13 +25,13 @@ import java.util.logging.Logger;
  * @author satria
  */
 public class ControllerAdmin extends MouseAdapter implements ActionListener {
-    private Admin view;
+    private GUIAdmin view;
     private Database db;
     private Model.ModelAdmin admin = new ModelAdmin();
     
     public ControllerAdmin(Database db){
         this.db = db;
-        view = new Admin();
+        view = new GUIAdmin();
         view.addActionListener(this);
         view.addMouseAdapter(this);
         view.setListRuangan(getRuangan());
@@ -46,9 +46,17 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
             String ruangan = view.getSelectedRuangan();
             String matkul = getKodeMk(view.getMatkul());
             ArrayList<String> hari = view.getHari();
-            String id_jadwal = "jadwal" + getBanyakJadwal();
+            int i = getBanyakJadwal();
+            String id_jadwal = "jadwal" + i;
             for (String s : hari) {
-                admin.addJadwal(id_jadwal, matkul, ruangan, s, db);
+                if (cekJadwal(id_jadwal, s, ruangan, matkul)) {
+                    admin.addJadwal(id_jadwal, matkul, ruangan, s, db);
+                    i++;
+                    id_jadwal = "jadwal" + i;
+                }
+                else {
+                    JOptionPane.showMessageDialog(view, "jadwal sudah tersedia");
+                }
             }
             view.resetView();
             view.setListJadwal(getNoJadwal());            
@@ -68,7 +76,7 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
             String detail = "";
             try {
                 db.connect();
-                String sql = "SELECT nim FROM jadwal WHERE id_jadwal = '"+ id_jadwal +"'";
+                String sql = "SELECT nim FROM enroll WHERE id_jadwal = '"+ id_jadwal +"'";
                 db.setRs(db.getStmt().executeQuery(sql));
                 while(db.getRs().next()){
                     detail = detail + db.getRs().getString("nim") + "\n";
@@ -93,7 +101,7 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
         String[] jadwal = new String[getBanyakJadwal()];
         try {
             db.connect();
-            String sql = "SELECT id_jadwal FROM jadwal";
+            String sql = "SELECT id_jadwal FROM jadwal ORDER BY id_jadwal ASC";
             db.setRs(db.getStmt().executeQuery(sql));
             int i = 0;
             while (db.getRs().next()){
@@ -140,4 +148,50 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
         return kode;
     }
     
+    public boolean cekJadwal(String id_jadwal, String hari, String no_ruangan, String kode_mk){
+        boolean a = true;
+        try {
+            db.connect();
+            String sql = "SELECT id_jadwal FROM jadwal "
+                    + "WHERE waktu = '" + hari 
+                    + "' AND no_ruangan = '" + no_ruangan
+                    + "' AND kode_mk = '"+kode_mk+"'";
+            db.setRs(db.getStmt().executeQuery(sql));
+            while(db.getRs().next()) {
+                if (id_jadwal == db.getRs().getString("id_jadwal")){
+                    a = false;
+                }
+            }
+            db.disconnect();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return a;
+    }
+
+// buat mahasiswa
+    
+//    public boolean cekRuangan (String id_jadwal) {
+//        boolean a = true;
+//        int i = 0;
+//        try {
+//            db.connect();
+//            String sql = "SELECT no_enroll FROM enroll WHERE id_jadwal = '" + id_jadwal + "'";
+//            db.setRs(db.getStmt().executeQuery(sql));
+//            while(db.getRs().next()) {
+//                i++;
+//            }
+//            sql = "SELECT kapasitas FROM jadwal NATURAL JOIN ruangan WHERE id_jadwal = '" + id_jadwal + "'";
+//            db.setRs(db.getStmt().executeQuery(sql));
+//            while(db.getRs().next()) {
+//               if (i >= db.getRs().getInt("kapasitas")){
+//                   a = false;
+//               }
+//            }
+//            db.disconnect();
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        return a;
+//    }
 }

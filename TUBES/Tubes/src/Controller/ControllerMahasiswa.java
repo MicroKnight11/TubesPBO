@@ -75,8 +75,9 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
                         }
                                      
                 } catch (Exception es) {
+                    JOptionPane.showMessageDialog(null, "input salah") ; 
                     es.printStackTrace();
-//                    JOptionPane.showMessageDialog(null, "input salah") ;                 
+                 
                 }
             }
         } catch (Exception ef) {

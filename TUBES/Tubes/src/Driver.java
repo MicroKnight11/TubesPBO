@@ -22,8 +22,6 @@ public class Driver {
     public static void main(String[] args) {
         new Controller();
 //    Database db = new Database();
-//    Model.ModelMahasiswa m = new ModelMahasiswa("123", "lol");
-////    m.addMhs(db);
-//        System.out.println(m.getNim());
+//        System.out.println(db.getListMahasiswa().size());
     }  
 }

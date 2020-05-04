@@ -45,17 +45,4 @@ public class ModelAdmin {
             Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void deleteMahasiswa(String nim, Database db) {
-        try{
-            db.connect();
-            String sql = "DELETE FROM jadwal WHERE nim = '" + nim +"';";
-            db.setRs(db.getStmt().executeQuery(sql));
-            db.disconnect();
-        } catch (SQLException ex) {
-            Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

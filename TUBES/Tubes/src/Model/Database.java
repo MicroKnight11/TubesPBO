@@ -26,12 +26,10 @@ public class Database {
     private String sql;
     
     private ArrayList<ModelRuangan> listRuangan = new ArrayList();
-    private ArrayList<ModelDosen> listDosen = new ArrayList();
     private ArrayList<ModelMahasiswa> listMahasiswa = new ArrayList();
     private ArrayList<ModelMatkul> listMatkul = new ArrayList();
     
     public Database() {
-        loadDosen();
         loadMahasiswa();
         loadMatkul();
         loadRuangan();
@@ -64,24 +62,6 @@ public class Database {
         Database.rs = rs;
     }
 
-    public void loadDosen() {
-      try {
-            connect();
-            sql = "SELECT * FROM dosen";
-            rs = stmt.executeQuery(sql);
-            ModelDosen m;
-            while (rs.next()) {
-                m = new ModelDosen(
-                    rs.getString("nid"),
-                    rs.getString("nama_dosen")
-                );
-            listDosen.add(m);
-            }
-            disconnect();
-        } catch (Exception e) {
-            e.printStackTrace();;
-        }          
-    }
 
     public void loadMahasiswa() {
         try {
@@ -151,10 +131,6 @@ public class Database {
 
     public ArrayList<ModelRuangan> getListRuangan() {
         return listRuangan;
-    }
-
-    public ArrayList<ModelDosen> getListDosen() {
-        return listDosen;
     }
 
     public ArrayList<ModelMahasiswa> getListMahasiswa() {

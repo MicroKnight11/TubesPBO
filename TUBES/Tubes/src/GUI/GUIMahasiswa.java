@@ -13,6 +13,7 @@ import Model.Database;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -23,16 +24,9 @@ public class GUIMahasiswa extends javax.swing.JFrame {
     /**
      * Creates new form tes
      */
-    private Database db;
-    private String sql;
-//    Connection con = null;
-//    Statement stmt = null;
-//    ResultSet rs = null;
-    
-    public GUIMahasiswa(Database db) {
-        this.db = db;
+
+    public GUIMahasiswa() {
         initComponents();
-        combobox();
     }
 
     /**
@@ -109,10 +103,13 @@ public class GUIMahasiswa extends javax.swing.JFrame {
 
         jLabel2.setText("Jadwal           :");
 
+        jtRuang.setEditable(false);
+
         jLabel10.setText("Ruangan        :");
 
         jLabel11.setText("Hari               :");
 
+        jtHari.setEditable(false);
         jtHari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtHariActionPerformed(evt);
@@ -121,6 +118,7 @@ public class GUIMahasiswa extends javax.swing.JFrame {
 
         jLabel12.setText("Matkul            :");
 
+        jtMatkul.setEditable(false);
         jtMatkul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtMatkulActionPerformed(evt);
@@ -331,20 +329,7 @@ public class GUIMahasiswa extends javax.swing.JFrame {
 
     private void cbJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJadwalActionPerformed
         // TODO add your handling code here:
-        try{
-            db.connect();
-            sql = "SELECT * FROM jadwal"
-                    + " NATURAL JOIN mata_kuliah"
-                    + " WHERE id_jadwal = '"+ getCbJadwal() +"'";
-            db.setRs(db.getStmt().executeQuery(sql));
-            while(db.getRs().next()){
-                jtHari.setText(db.getRs().getString("waktu"));
-                jtMatkul.setText(db.getRs().getString("kode_mk"));
-                jtRuang.setText(db.getRs().getString("no_ruangan"));
-            }
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, ex);
-        }
+        
     }//GEN-LAST:event_cbJadwalActionPerformed
 
     private void jtHariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtHariActionPerformed
@@ -388,28 +373,24 @@ public class GUIMahasiswa extends javax.swing.JFrame {
         
         
     }
-    private void combobox(){
-        try{
-            db.connect();
-            sql = "select id_jadwal from jadwal";
-            db.setRs(db.getStmt().executeQuery(sql));
-//            con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE", "PBO", "tubes");//link sql
-//            String sql = "select id_jadwal from jadwal";
-//            stmt = con.createStatement();
-//            rs = stmt.executeQuery(sql);
-            while(db.getRs().next()){
-                String name = db.getRs().getString("id_jadwal");
-                cbJadwal.addItem(name); 
-            }
-            db.disconnect();
-//            stmt.close();
-//            con.close();
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, ex);
-        }
+
+    public void setJtHari(String jtHari) {
+        this.jtHari.setText(jtHari);
+    }
+
+    public void setJtMatkul(String jtMatkul) {
+        this.jtMatkul.setText(jtMatkul);
+    }
+
+    public void setJtRuang(String jtRuang) {
+        this.jtRuang.setText(jtRuang);
+    }
+
+    public JComboBox<String> getCbJadwal() {
+        return cbJadwal;
     }
     
-    public String getCbJadwal(){
+    public String getCbJadwalIndex(){
         int i = cbJadwal.getSelectedIndex();
         return cbJadwal.getItemAt(i);
     }

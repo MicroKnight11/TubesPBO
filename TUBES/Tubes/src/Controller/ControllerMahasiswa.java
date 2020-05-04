@@ -6,6 +6,8 @@ import Model.Database;
 import Model.ModelMahasiswa;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -28,10 +30,12 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
     private ArrayList<ModelMahasiswa> daftarmhs;
     
     public ControllerMahasiswa(Database db) {
-        view = new GUIMahasiswa(db);
+        this.db = db;
+        view = new GUIMahasiswa();
         view.addActionListener(this);
         view.addMouseAdapter(this);
         view.setDaftarMatkul(getMatkul());
+        combobox();
         view.setVisible(true);
     }
     public String[] getMatkul() {
@@ -55,15 +59,13 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
                         String nim = view.getTfNIM();
                         String matkul = view.getTfMatkul();
                         mhs.addMhs(nama, nim,matkul, db);
-                        view.resetView();
-                    
+                        view.resetView();                    
                 } catch (Exception es) {
-                    System.out.println("Error 404 "+ es.getMessage());
-                   
+                    JOptionPane.showMessageDialog(null, "input salah")  ;                 
                 }
             }
         } catch (Exception ef) {
-            JOptionPane.showMessageDialog(null, "Eror");
+            JOptionPane.showMessageDialog(null, "Error");
         }
     }
     
@@ -71,11 +73,10 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
         Object source = me.getSource();
         if (source.equals(view.getListMatkul())) {
             String nama_mk = view.getSelectedMatkul();
-            String detail = "";
             try {
                 int i = 0;
                 db.connect();
-                String sql = "SELECT * FROM mahasiswa NATURAL JOIN mata_kuliah WHERE matkul = '"+ nama_mk +"'";
+                String sql = "SELECT * FROM mahasiswa NATURAL JOIN enroll NATURAL JOIN jadwal NATURAL JOIN mata_kuliah WHERE nama_mk = '"+ nama_mk +"'";
                 db.setRs(db.getStmt().executeQuery(sql));
                 while(db.getRs().next()){
                    view.setTabel(
@@ -89,6 +90,48 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+        }
+    }
+    
+    private void combobox(){
+        view.getCbJadwal().addItem("pilih");
+        try{
+            db.connect();
+            String sql = "SELECT id_jadwal FROM jadwal ORDER BY id_jadwal ASC";
+            db.setRs(db.getStmt().executeQuery(sql));
+            while(db.getRs().next()){
+                String name = db.getRs().getString("id_jadwal");
+                view.getCbJadwal().addItem(name); 
+            }
+            db.disconnect();
+            view.getCbJadwal().addItemListener(new ItemListener() {
+                @Override
+                public void itemStateChanged(ItemEvent ie) {
+                    try{
+                        if (view.getCbJadwalIndex() == "pilih"){
+                            view.setJtHari(null);
+                            view.setJtMatkul(null);
+                            view.setJtRuang(null);
+                        }
+                        else{
+                            db.connect();
+                            String sql = "SELECT * FROM jadwal"
+                                + " NATURAL JOIN mata_kuliah"
+                                + " WHERE id_jadwal = '"+ view.getCbJadwalIndex()+"'";
+                            db.setRs(db.getStmt().executeQuery(sql));
+                            while(db.getRs().next()){
+                                view.setJtHari(db.getRs().getString("waktu"));
+                                view.setJtMatkul(db.getRs().getString("kode_mk"));
+                                view.setJtRuang(db.getRs().getString("no_ruangan"));
+                            }
+                        }                           
+                    }catch(Exception ex){
+                        JOptionPane.showMessageDialog(null, ex);
+                    }
+                }
+            });
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
         }
     }
 }

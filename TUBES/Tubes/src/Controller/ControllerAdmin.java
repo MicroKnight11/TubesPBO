@@ -46,20 +46,25 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
             String ruangan = view.getSelectedRuangan();
             String matkul = getKodeMk(view.getMatkul());
             ArrayList<String> hari = view.getHari();
-            int i = getBanyakJadwal();
-            String id_jadwal = "jadwal" + i;
-            for (String s : hari) {
-                if (cekJadwal(id_jadwal, s, ruangan, matkul)) {
-                    admin.addJadwal(id_jadwal, matkul, ruangan, s, db);
-                    i++;
-                    id_jadwal = "jadwal" + i;
-                }
-                else {
-                    JOptionPane.showMessageDialog(view, "jadwal sudah tersedia");
-                }
+            if (ruangan == null || hari == null || matkul == null) {
+                JOptionPane.showMessageDialog(view, "Input Belum Benar");
             }
-            view.resetView();
-            view.setListJadwal(getNoJadwal());            
+            else{
+                int i = getBanyakJadwal();
+                String id_jadwal = "jadwal" + i;
+                for (String s : hari) {
+                    if (cekJadwal(id_jadwal, s, ruangan, matkul)) {
+                        admin.addJadwal(id_jadwal, matkul, ruangan, s, db);
+                        i++;
+                        id_jadwal = "jadwal" + i;
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(view, "jadwal sudah tersedia");
+                    }
+                }
+                view.resetView();
+                view.setListJadwal(getNoJadwal()); 
+            }
         }
         else if (source.equals(view.getBtnDelete())) {
             String jadwal = view.getSelectedJadwal();
@@ -76,10 +81,13 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
             String detail = "";
             try {
                 db.connect();
-                String sql = "SELECT nim FROM enroll WHERE id_jadwal = '"+ id_jadwal +"'";
+                String sql = "SELECT * FROM jadwal NATURAL JOIN mata_kuliah WHERE id_jadwal = '"+ id_jadwal +"'";
                 db.setRs(db.getStmt().executeQuery(sql));
                 while(db.getRs().next()){
-                    detail = detail + db.getRs().getString("nim") + "\n";
+                    detail = "ID_jadwal  : "+db.getRs().getString("id_jadwal")+"\n"
+                            +"Ruangan   : "+db.getRs().getString("no_ruangan")+"\n"
+                            +"Hari            : "+db.getRs().getString("waktu")+"\n"
+                            +"Matkul        : "+db.getRs().getString("nama_mk")+"\n";                     
                 }
                 db.disconnect();
             } catch (Exception ex) {
@@ -148,23 +156,24 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
         return kode;
     }
     
-    public boolean cekJadwal(String id_jadwal, String hari, String no_ruangan, String kode_mk){
+    public boolean cekJadwal(String id_jadwal, String hari, String no_ruangan, String kode_mk) {
         boolean a = true;
         try {
             db.connect();
             String sql = "SELECT id_jadwal FROM jadwal "
-                    + "WHERE waktu = '" + hari 
+                    + "WHERE waktu = '" + hari
                     + "' AND no_ruangan = '" + no_ruangan
                     + "' AND kode_mk = '"+kode_mk+"'";
             db.setRs(db.getStmt().executeQuery(sql));
-            while(db.getRs().next()) {
-                if (id_jadwal == db.getRs().getString("id_jadwal")){
-                    a = false;
-                }
+            while(db.getRs().next()) {{
+                a = false;
             }
             db.disconnect();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            }           
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
         return a;
     }

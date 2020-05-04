@@ -17,20 +17,6 @@ import java.util.logging.Logger;
  * @author R O G
  */
 public class ModelAdmin {   
-//    private int id;
-//    private ArrayList<ModelMatkul> Mk;
-
-//    public ModelAdmin() {
-//        this.Mk = new ArrayList<>();
-//    }
-//   
-//    public void addMatkul(ModelMatkul e){
-//        this.Mk.add(e);
-//    }
-//    
-//    public void delMatkul(ModelMatkul MK){
-//        this.Mk.remove(MK);
-//    }
     
     public void addJadwal(String id_jadwal, String kode_mk, String no_ruangan, String waktu, Database db) {
         try {

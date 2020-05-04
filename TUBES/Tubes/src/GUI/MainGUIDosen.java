@@ -5,14 +5,10 @@
  */
 package tubes;
 
-import Model.Database;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -119,9 +115,17 @@ public class MainGUIDosen extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID_JADWAL", "First Name", "Title 3", "Title 4"
+                "ID_JADWAL", "RUANGAN", "HARI", "NIM"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(jTabledosen);
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
@@ -159,7 +163,7 @@ public class MainGUIDosen extends javax.swing.JFrame {
                         .addComponent(jBSearch)))
                 .addGap(124, 124, 124)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(431, Short.MAX_VALUE))
+                .addContainerGap(459, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -218,17 +222,22 @@ public class MainGUIDosen extends javax.swing.JFrame {
         
     }
     
+    public void resetTable() {
+        int rowCount = jTabledosen.getRowCount();
+        for (int i = rowCount - 1; i >= 0; i--) {
+            setTabel("", "", "", "", i);
+        }
+    }
+    
     public JButton getBtnCari() {
         return jBSearch;
     }
      
-    public void setTabel(ArrayList<ModelDosen> Dosen){
-        for (int j = 0; j < Dosen.size(); j++) {
-            jTabledosen.setValueAt(Dosen.get(j).getNID(), j, 0);
-            jTabledosen.setValueAt(Dosen.get(j).getFirstName(), j, 1);
-            jTabledosen.setValueAt(Dosen.get(j).getLastName(), j, 2);
-        }
-    
+    public void setTabel(String id_jadwal, String ruangan, String hari, String nim, int j){
+        jTabledosen.setValueAt(id_jadwal, j, 0);
+        jTabledosen.setValueAt(ruangan, j, 1);
+        jTabledosen.setValueAt(hari, j, 2);   
+        jTabledosen.setValueAt(nim, j, 3);   
     }
      
     // Variables declaration - do not modify//GEN-BEGIN:variables

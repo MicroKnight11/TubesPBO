@@ -132,7 +132,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" pref="338" max="-2" attributes="0"/>
-                  <EmptySpace pref="431" max="32767" attributes="0"/>
+                  <EmptySpace pref="459" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -186,10 +186,10 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="20">
-                    <Column editable="true" title="ID_JADWAL" type="java.lang.Object"/>
-                    <Column editable="true" title="First Name" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                    <Column editable="true" title="ID_JADWAL" type="java.lang.String"/>
+                    <Column editable="true" title="RUANGAN" type="java.lang.String"/>
+                    <Column editable="true" title="HARI" type="java.lang.String"/>
+                    <Column editable="true" title="NIM" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

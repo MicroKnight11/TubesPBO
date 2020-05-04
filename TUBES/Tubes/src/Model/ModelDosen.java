@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tubes.MainGUIDosen;
 
 /**
  *
@@ -43,22 +44,7 @@ import java.util.logging.Logger;
         public void setNID(String NID) {
             this.NID = NID;
         }
-        
-        public void liatJadwal(String NID, Database db) {
-            try{
-                db.connect();
-                String sql = "SELECT * FROM jadwal WHERE NID = '" + NID +"';";
-                db.setRs(db.getStmt().executeQuery(sql));
-                while(db.getRs().next()){
-                    
-                }
-                db.disconnect();
-            } catch (SQLException ex) {
-                Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
-            }           
-        }
+               
     }
 //    public Dosen(Database a) {
 //        db = a;

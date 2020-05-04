@@ -56,7 +56,8 @@ public class GUIAdmin extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txJadwal = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txJadwal = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -196,6 +197,9 @@ public class GUIAdmin extends javax.swing.JFrame {
         jLabel4.setText("Detail");
 
         txJadwal.setEditable(false);
+        txJadwal.setColumns(20);
+        txJadwal.setRows(5);
+        jScrollPane3.setViewportView(txJadwal);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -204,7 +208,8 @@ public class GUIAdmin extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnDelete))
@@ -212,8 +217,7 @@ public class GUIAdmin extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txJadwal))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -225,9 +229,9 @@ public class GUIAdmin extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnDelete)
                 .addContainerGap())
         );
@@ -368,7 +372,12 @@ public class GUIAdmin extends javax.swing.JFrame {
         if (chSabtu.isSelected()) {
             s.add(chSabtu.getText());
         }
-        return s;
+        if (s.isEmpty()){
+            return null;
+        }
+        else {
+            return s;
+        }
     }
 
     public JList<String> getListJadwal() {
@@ -389,8 +398,11 @@ public class GUIAdmin extends javax.swing.JFrame {
         else if (rbKalkulus.isSelected()) {
             return rbKalkulus.getText();
         }
-        else {
+        else if (rbPBO.isSelected()) {
             return rbPBO.getText();
+        }
+        else {
+            return null;
         }
     }
 
@@ -455,12 +467,13 @@ public class GUIAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JList<String> listJadwal;
     private javax.swing.JList<String> listRuangan;
     private javax.swing.JRadioButton rbEnglish;
     private javax.swing.JRadioButton rbJarkom;
     private javax.swing.JRadioButton rbKalkulus;
     private javax.swing.JRadioButton rbPBO;
-    private javax.swing.JTextField txJadwal;
+    private javax.swing.JTextArea txJadwal;
     // End of variables declaration//GEN-END:variables
 }

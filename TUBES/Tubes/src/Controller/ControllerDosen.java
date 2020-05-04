@@ -25,7 +25,7 @@ public class ControllerDosen implements ActionListener{
     private MainGUIDosen viewDosen;           
     Database db;
     private ModelDosen dosen;  
-    private ArrayList<ModelDosen> listDosen = new ArrayList();
+    //private ArrayList<ModelDosen> listDosen = new ArrayList();
     
     public ControllerDosen(Database db) {
         viewDosen = new MainGUIDosen();
@@ -61,20 +61,23 @@ public class ControllerDosen implements ActionListener{
                 viewDosen.dispose();
             } 
             else if (source.equals(viewDosen.getBtnCari())) {
-                getlistData();
+//                getlistData();
                 try {
                     if (viewDosen.getjTextFieldNID().getText().equals("")){
                         JOptionPane.showMessageDialog(null, "NIDN harus diisi terlebih dahulu");
                     } else {
-                        db.connect();
+//                        db.connect();
                         String NID = viewDosen.getjTextFieldNID().getText();
-                        String sql = "SELECT * FROM mata_kuliah NATURAL JOIN jadwal WHERE NID ='"+NID+"'";
-                        db.setRs(db.getStmt().executeQuery(sql));
-                        while(db.getRs().next()){
-                            ModelDosen dsn1 = new ModelDosen(rs.getString("NIDN"), rs.getString("FirstName"), rs.getString("LastName"));
-                            listDosen.add(dsn1);          
-                        }
-                        viewDosen.setDataDosen(listDosen);
+                        viewDosen.resetTable();
+                        liatJadwal(NID, db);
+//                        String sql = "SELECT * FROM mata_kuliah NATURAL JOIN jadwal WHERE NID ='"+NID+"'";
+//                        db.setRs(db.getStmt().executeQuery(sql));
+//                        while(db.getRs().next()){
+//                            ModelDosen dsn1 = new ModelDosen(rs.getString("NIDN"), rs.getString("FirstName"), rs.getString("LastName"));
+//                            listDosen.add(dsn1);          
+//                        }
+//                        db.disconnect();
+//                        viewDosen.setDataDosen(listDosen);
                     }
                 } catch (Exception es) {
                     System.out.println("Error 404 "+ es.getMessage());
@@ -84,5 +87,26 @@ public class ControllerDosen implements ActionListener{
         } catch (Exception ef) {
             JOptionPane.showMessageDialog(null, "Data Dosen Tidak DItemukan");
         }
+    }
+    
+    public void liatJadwal(String NID, Database db) {
+       try{
+            int j = 0;
+            db.connect();
+            String sql = "SELECT * FROM mata_kuliah NATURAL JOIN jadwal NATURAL JOIN enroll WHERE NID = '" + NID +"'";
+            db.setRs(db.getStmt().executeQuery(sql));
+            while(db.getRs().next()){
+                viewDosen.setTabel(
+                        db.getRs().getString("id_jadwal"),
+                        db.getRs().getString("no_ruangan"),
+                        db.getRs().getString("waktu"),
+                        db.getRs().getString("nim"), 
+                        j);
+                j++;
+            }
+            db.disconnect();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }           
     }
 }

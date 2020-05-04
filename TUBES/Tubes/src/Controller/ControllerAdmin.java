@@ -72,7 +72,11 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
         }
         else if (source.equals(view.getBtnDelete())) {
             String jadwal = view.getSelectedJadwal();
-            admin.deleteJadwal(jadwal, db);
+            if (jadwal == ""){
+                JOptionPane.showMessageDialog(null, "Tidak ada yg di delete...");
+            } else {
+                admin.deleteJadwal(jadwal, db);
+            }
             view.resetView();
             view.setListJadwal(getNoJadwal());
         }

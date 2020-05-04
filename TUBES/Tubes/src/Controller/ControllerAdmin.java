@@ -72,11 +72,7 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
         }
         else if (source.equals(view.getBtnDelete())) {
             String jadwal = view.getSelectedJadwal();
-            if (jadwal == ""){
-                JOptionPane.showMessageDialog(null, "Tidak ada yg di delete...");
-            } else {
-                admin.deleteJadwal(jadwal, db);
-            }
+            admin.deleteJadwal(jadwal, db);
             view.resetView();
             view.setListJadwal(getNoJadwal());
         }
@@ -100,7 +96,7 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
                 }
                 db.disconnect();
             } catch (Exception ex) {
-                ex.printStackTrace();
+                JOptionPane.showMessageDialog(view, "sql gagal");
             }
             view.setTxJadwal(detail);
         }
@@ -186,30 +182,4 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
         }
         return a;
     }
-
-// buat mahasiswa
-    
-//    public boolean cekRuangan (String id_jadwal) {
-//        boolean a = true;
-//        int i = 0;
-//        try {
-//            db.connect();
-//            String sql = "SELECT no_enroll FROM enroll WHERE id_jadwal = '" + id_jadwal + "'";
-//            db.setRs(db.getStmt().executeQuery(sql));
-//            while(db.getRs().next()) {
-//                i++;
-//            }
-//            sql = "SELECT kapasitas FROM jadwal NATURAL JOIN ruangan WHERE id_jadwal = '" + id_jadwal + "'";
-//            db.setRs(db.getStmt().executeQuery(sql));
-//            while(db.getRs().next()) {
-//               if (i >= db.getRs().getInt("kapasitas")){
-//                   a = false;
-//               }
-//            }
-//            db.disconnect();
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        return a;
-//    }
 }

@@ -40,11 +40,15 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
         view.setVisible(true);
     }
     public String[] getMatkul() {
-        String[] listMatkul = new String[db.getListMatkul().size()];
-        for (int i = 0; i < listMatkul.length; i++) {
-            listMatkul[i] = db.getListMatkul().get(i).getNama_MK();
+        if (db.getListMatkul().size() <= 0){
+            JOptionPane.showMessageDialog(null, "Matkul Kosong");
+        } else {
+            String[] listMatkul = new String[db.getListMatkul().size()];
+            for (int i = 0; i < listMatkul.length; i++) {
+                listMatkul[i] = db.getListMatkul().get(i).getNama_MK();
+            }
         }
-        return listMatkul;
+        return null;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -59,12 +63,17 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
                         String nama = view.getNama();
                         String nim = view.getTfNIM();
                         String id_jadwal = view.getCbJadwalText();
-                        int i = getRollNum() + 1;
-                        ModelMahasiswa mhs = new ModelMahasiswa(nim, nama);
-                        mhs.addMhs(db);
-                        mhs.addJadwal(id_jadwal, i, db);
-                        mhs.addMatkul(id_jadwal, db);
-                        view.resetView();               
+                        if (nama == null || nim == null || id_jadwal == null) {
+                            JOptionPane.showMessageDialog(view, "Input Belum Benar");
+                        }else{
+                            int i = getRollNum() + 1;
+                            ModelMahasiswa mhs = new ModelMahasiswa(nim, nama);
+                            mhs.addMhs(db);
+                            mhs.addJadwal(id_jadwal, i, db);
+                            mhs.addMatkul(id_jadwal, db);
+                            view.resetView();  
+                        }
+                                     
                 } catch (Exception es) {
                     es.printStackTrace();
 //                    JOptionPane.showMessageDialog(null, "input salah") ;                 

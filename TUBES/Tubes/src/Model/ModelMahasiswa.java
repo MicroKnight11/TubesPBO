@@ -14,8 +14,6 @@ import java.util.logging.*;
  */
 
 public class ModelMahasiswa extends Human{
-    private Database db;
-    private String sql;
     private String nim;
     private ArrayList<ModelMatkul> listMatKul;
         
@@ -33,10 +31,10 @@ public class ModelMahasiswa extends Human{
         this.nim = nim;
     }
     
-    public void addJadwal(String id_jadwal, int i){
+    public void addJadwal(String id_jadwal, int i, Database db){
         try {
             db.connect();
-            sql = "INSERT INTO enroll value ("+i+",'"+id_jadwal+"','"+nim+"')";
+            String sql = "INSERT INTO enroll value ("+i+",'"+id_jadwal+"','"+nim+"')";
             db.setRs(db.getStmt().executeQuery(sql));
             db.disconnect();
         } catch (SQLException ex) {
@@ -46,10 +44,10 @@ public class ModelMahasiswa extends Human{
         }
     }
         
-    public void addMatkul(String id_jadwal) {
+    public void addMatkul(String id_jadwal, Database db) {
         try {
             db.connect();
-            sql = "SELECT kode_mk, nama_mk, sks, nid FROM jadwal"
+            String sql = "SELECT kode_mk, nama_mk, sks, nid FROM jadwal"
                 + "natural join mata_kuliah"
                 + "where id_jadwal = '" +id_jadwal+"';";
             db.setRs(db.getStmt().executeQuery(sql));

@@ -127,16 +127,19 @@ public class Database {
     public void loadMatkul() {
         try {
            connect();
-           sql = "SELECT * FROM mata_kuliah";
+           sql = "SELECT * FROM mata_kuliah NATURAL JOIN dosen";
            rs = stmt.executeQuery(sql);
            ModelMatkul m;
+           ModelDosen d;
            while (rs.next()) {
+                d = new ModelDosen(
+                    rs.getString("nid"), 
+                    rs.getString("nama_dosen"));
                 m = new ModelMatkul(
-                   rs.getString("kode_MK"),
-                   rs.getString("nama_MK"),
-                   rs.getString("SKS")
-//                   rs.getString("nid"),
-//                   this
+                    rs.getString("kode_MK"),
+                    rs.getString("nama_MK"),
+                    rs.getString("SKS"),
+                    d
                 );
                 listMatkul.add(m);
            }

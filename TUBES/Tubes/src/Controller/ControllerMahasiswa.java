@@ -10,7 +10,10 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -25,9 +28,10 @@ import javax.swing.JOptionPane;
  */
 public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
     private GUIMahasiswa view;
-    Database db;
+    private Database db;
     private ModelMahasiswa mhs;
     private ArrayList<ModelMahasiswa> daftarmhs;
+    private static int rollNum;
     
     public ControllerMahasiswa(Database db) {
         this.db = db;
@@ -36,6 +40,7 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
         view.addMouseAdapter(this);
         view.setDaftarMatkul(getMatkul());
         combobox();
+       // rollNum = getRollNum();
         view.setVisible(true);
     }
     public String[] getMatkul() {
@@ -58,11 +63,14 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
                         String nama = view.getNama();
                         String nim = view.getTfNIM();
                         String id_jadwal = view.getCbJadwalText();
+                        int i = getRollNum() + 1;
+                        System.out.println(i);
                         mhs = new ModelMahasiswa(nim, nama);
                         mhs.addMhs(db);
-                        mhs.addJadwal(id_jadwal, 0);
-                        mhs.addMatkul(id_jadwal);
-                        view.resetView();                    
+                        mhs.addJadwal(id_jadwal, i, db);
+                        mhs.addMatkul(id_jadwal, db);
+                        view.resetView();               
+                        //rollNum++;
                 } catch (Exception es) {
                     es.printStackTrace();
 //                    JOptionPane.showMessageDialog(null, "input salah") ;                 
@@ -137,6 +145,22 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex);
         }
+    }
+    
+    public int getRollNum() {
+        int i = 0;
+        try {
+            db.connect();
+            String sql = "SELECT no_enroll FROM enroll ORDER BY no_enroll ASC";
+            db.setRs(db.getStmt().executeQuery(sql));
+            while (db.getRs().next()) {                
+                i = db.getRs().getInt("no_enroll");
+            }
+            db.disconnect();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return i;
     }
 // buat mahasiswa
     

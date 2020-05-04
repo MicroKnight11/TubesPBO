@@ -42,7 +42,11 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         Object source = ae.getSource();
-        if (source.equals(view.getBtnAdd())) {
+        if (source.equals(view.getBtnBack())) {
+            new Controller();
+            view.dispose();
+        }
+        else if (source.equals(view.getBtnAdd())) {
             String ruangan = view.getSelectedRuangan();
             String matkul = getKodeMk(view.getMatkul());
             ArrayList<String> hari = view.getHari();
@@ -72,6 +76,7 @@ public class ControllerAdmin extends MouseAdapter implements ActionListener {
             view.resetView();
             view.setListJadwal(getNoJadwal());
         }
+        
     }
     
     public void mousePressed(MouseEvent me) {

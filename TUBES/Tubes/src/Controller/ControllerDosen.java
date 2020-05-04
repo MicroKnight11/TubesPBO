@@ -9,7 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import tubes.MainGUIDosen;
+import tubes.GUIDosen;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,13 +22,13 @@ import tubes.MainGUIDosen;
  * @author satria
  */
 public class ControllerDosen implements ActionListener{
-    private MainGUIDosen viewDosen;           
+    private GUIDosen viewDosen;           
     Database db;
     private ModelDosen dosen;  
     //private ArrayList<ModelDosen> listDosen = new ArrayList();
     
     public ControllerDosen(Database db) {
-        viewDosen = new MainGUIDosen();
+        viewDosen = new GUIDosen();
         viewDosen.setVisible(true);
         viewDosen.addActionListener(this);    
         this.db = db;

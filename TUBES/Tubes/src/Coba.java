@@ -2,7 +2,7 @@
 
 import Controller.Controller;
 import Model.*;
-import tubes.MainGUIDosen;
+import tubes.GUIDosen;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

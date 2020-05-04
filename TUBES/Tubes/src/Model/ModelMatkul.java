@@ -11,8 +11,6 @@ package Model;
  */
     
 public class ModelMatkul {
-    private Database db;
-    private String sql;
     private String KD_MK;
     private String nama_MK;
     private String SKS;
@@ -24,21 +22,19 @@ public class ModelMatkul {
         this.SKS = SKS;
     }
         
-    public ModelMatkul(String KD_MK, String nama_MK, String SKS, String nid) {
+    public ModelMatkul(String KD_MK, String nama_MK, String SKS, String nid, Database db) {
         this.KD_MK = KD_MK;
         this.nama_MK = nama_MK;
         this.SKS = SKS;
         try {
             db.connect();
-            sql = "SELECT * FROM dosen where nid = '"+nid+"';";
+            String sql = "SELECT * FROM dosen where nid = '"+nid+"'";
             db.setRs(db.getStmt().executeQuery(sql));
             ModelDosen m;
             while (db.getRs().next()) {
                 m = new ModelDosen(
                     db.getRs().getString("nid"),
-                    db.getRs().getString("kelompok_keahlian"),
-                    db.getRs().getString("nama_dosen"),
-                    db.getRs().getString("tgl_lahir")
+                    db.getRs().getString("nama_dosen")
                 );
             Dsn = m;
             }

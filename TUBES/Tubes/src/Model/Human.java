@@ -11,11 +11,9 @@ package Model;
  */
 public abstract class Human {
     private String nama;
-    private String tanggalLahir;
 
-    public Human(String nama, String tanggalLahir) {
+    public Human(String nama) {
         this.nama = nama;
-        this.tanggalLahir = tanggalLahir;
     }
 
     public String getNama() {
@@ -24,13 +22,5 @@ public abstract class Human {
 
     public void setNama(String nama) {
         this.nama = nama;
-    }
-
-    public String getTanggalLahir() {
-        return tanggalLahir;
-    }
-
-    public void setTanggalLahir(String tanggalLahir) {
-        this.tanggalLahir = tanggalLahir;
-    }   
+    }  
 }

@@ -73,9 +73,7 @@ public class Database {
             while (rs.next()) {
                 m = new ModelDosen(
                     rs.getString("nid"),
-                    rs.getString("kelompok_keahlian"),
-                    rs.getString("nama_dosen"),
-                    rs.getString("tgl_lahir")
+                    rs.getString("nama_dosen")
                 );
             listDosen.add(m);
             }
@@ -94,8 +92,7 @@ public class Database {
            while (rs.next()) {
                m = new ModelMahasiswa(
                    rs.getString("nim"),
-                   rs.getString("nama_mhs"),
-                   rs.getString("tgl_lahir")
+                   rs.getString("nama_mhs")
                );
             listMahasiswa.add(m);
            }
@@ -130,18 +127,18 @@ public class Database {
     public void loadMatkul() {
         try {
            connect();
-           sql = "SELECT * FROM mata_kuliah"
-                   + " natural join dosen";
+           sql = "SELECT * FROM mata_kuliah";
            rs = stmt.executeQuery(sql);
            ModelMatkul m;
            while (rs.next()) {
-               m = new ModelMatkul(
+                m = new ModelMatkul(
                    rs.getString("kode_MK"),
                    rs.getString("nama_MK"),
                    rs.getString("SKS")
-                   //rs.getString("nid")
-               );
-            listMatkul.add(m);
+//                   rs.getString("nid"),
+//                   this
+                );
+                listMatkul.add(m);
            }
            disconnect();
        } catch (Exception e) {

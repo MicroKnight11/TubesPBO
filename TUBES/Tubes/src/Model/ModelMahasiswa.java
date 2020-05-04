@@ -19,8 +19,8 @@ public class ModelMahasiswa extends Human{
     private String nim;
     private ArrayList<ModelMatkul> listMatKul;
         
-    public ModelMahasiswa(String NIM, String nama, String tanggalLahir) {
-        super(nama, tanggalLahir);
+    public ModelMahasiswa(String NIM, String nama) {
+        super(nama);
         this.nim = nim;
         listMatKul = new ArrayList();
     }    
@@ -32,21 +32,35 @@ public class ModelMahasiswa extends Human{
     public void setNim(String nim) {
         this.nim = nim;
     }
+    
+    public void addJadwal(String id_jadwal, int i){
+        try {
+            db.connect();
+            sql = "INSERT INTO enroll value ("+i+",'"+id_jadwal+"','"+nim+"')";
+            db.setRs(db.getStmt().executeQuery(sql));
+            db.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
         
     public void addMatkul(String id_jadwal) {
         try {
-        db.connect();
-        sql = "SELECT kode_mk, nama_mk, sks, nid FROM jadwal"
-            + "natural join mata_kuliah"
-            + "where id_jadwal = '" +id_jadwal+"';";
-        db.setRs(db.getStmt().executeQuery(sql));
-        while (db.getRs().next()) {
-            ModelMatkul m = new ModelMatkul(
-                db.getRs().getString("kode_MK"),
-                db.getRs().getString("nama_MK"),
-                db.getRs().getString("SKS"),
-                db.getRs().getString("nid")
-            );
+            db.connect();
+            sql = "SELECT kode_mk, nama_mk, sks, nid FROM jadwal"
+                + "natural join mata_kuliah"
+                + "where id_jadwal = '" +id_jadwal+"';";
+            db.setRs(db.getStmt().executeQuery(sql));
+            while (db.getRs().next()) {
+                ModelMatkul m = new ModelMatkul(
+                    db.getRs().getString("kode_MK"),
+                    db.getRs().getString("nama_MK"),
+                    db.getRs().getString("SKS"),
+                    db.getRs().getString("nid"),
+                    db
+                );
             listMatKul.add(m);
         }
         db.disconnect();
@@ -57,21 +71,17 @@ public class ModelMahasiswa extends Human{
         }
     }
     
-    public void addMhs(String nama, String nim, String matkul, Database db) {
+    public void addMhs(Database db) {
         try {
             db.connect();
             String sql = "INSERT INTO mahasiswa VALUES ('"
                     +nim+"','"
-                    +nama+"', xxx '"
-                    +"','"
-                    +matkul+"')";
+                    +super.getNama()+"')";
             db.setRs(db.getStmt().executeQuery(sql));
             db.disconnect();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
-    
-    
+    }      
 }  
     

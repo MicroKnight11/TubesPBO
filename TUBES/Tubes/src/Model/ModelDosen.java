@@ -11,21 +11,11 @@ package Model;
  */
 
 public class ModelDosen extends Human{
-    private String KK;
     private String NID;
         
-    public ModelDosen(String NID, String KK, String nama, String tanggalLahir) {
-        super(nama, tanggalLahir);
-        this.KK = KK;
+    public ModelDosen(String NID, String nama) {
+        super(nama);
         this.NID = NID;
-    }
-    
-    public String getKK() {
-        return KK;
-    }
-    
-    public void setKK(String KK) {
-        this.KK = KK;
     }
     
     public String getNID() {

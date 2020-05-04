@@ -1,6 +1,7 @@
 
 
 import Controller.Controller;
+import Model.Database;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,6 +19,8 @@ public class Driver {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new Controller();
+  //      new Controller();
+        Database db = new Database();
+        System.out.println(db.getListMatkul());
     }  
 }

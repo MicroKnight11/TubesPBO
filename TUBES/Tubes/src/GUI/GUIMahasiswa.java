@@ -390,7 +390,7 @@ public class GUIMahasiswa extends javax.swing.JFrame {
         return cbJadwal;
     }
     
-    public String getCbJadwalIndex(){
+    public String getCbJadwalText(){
         int i = cbJadwal.getSelectedIndex();
         return cbJadwal.getItemAt(i);
     }
@@ -431,13 +431,22 @@ public class GUIMahasiswa extends javax.swing.JFrame {
         return jTableMhs;
     }
     
-     public void setjTablemhs(JTable jTableMhs) {
+    public void setjTablemhs(JTable jTableMhs) {
         this.jTableMhs = jTableMhs;
     }
+     
     public void setTabel(String nama, String NIM,int i) {
         jTableMhs.setValueAt(nama, i, 0);
         jTableMhs.setValueAt(NIM, i, 1);
     }
+    
+    public void resetTable() {
+        int rowCount = jTableMhs.getRowCount();
+        for (int i = rowCount - 1; i >= 0; i--) {
+            setTabel("", "", i);
+        }
+    }
+    
     public void resetView(){
         tfNama.setText("");
         tfNIM.setText("");

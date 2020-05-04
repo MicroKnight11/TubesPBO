@@ -57,11 +57,15 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
                 try {
                         String nama = view.getNama();
                         String nim = view.getTfNIM();
-                        String matkul = view.getTfMatkul();
-                        mhs.addMhs(nama, nim,matkul, db);
+                        String id_jadwal = view.getCbJadwalText();
+                        mhs = new ModelMahasiswa(nim, nama);
+                        mhs.addMhs(db);
+                        mhs.addJadwal(id_jadwal, 0);
+                        mhs.addMatkul(id_jadwal);
                         view.resetView();                    
                 } catch (Exception es) {
-                    JOptionPane.showMessageDialog(null, "input salah")  ;                 
+                    es.printStackTrace();
+//                    JOptionPane.showMessageDialog(null, "input salah") ;                 
                 }
             }
         } catch (Exception ef) {
@@ -78,13 +82,13 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
                 db.connect();
                 String sql = "SELECT * FROM mahasiswa NATURAL JOIN enroll NATURAL JOIN jadwal NATURAL JOIN mata_kuliah WHERE nama_mk = '"+ nama_mk +"'";
                 db.setRs(db.getStmt().executeQuery(sql));
+                view.resetTable();
                 while(db.getRs().next()){
                    view.setTabel(
                            db.getRs().getString("nama_mhs"),
                            db.getRs().getString("nim"),
                            i);
-                    i++;
-                                            
+                    i++;                                            
                 }
                 db.disconnect();
             } catch (Exception ex) {
@@ -108,7 +112,7 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
                 @Override
                 public void itemStateChanged(ItemEvent ie) {
                     try{
-                        if (view.getCbJadwalIndex() == "pilih"){
+                        if (view.getCbJadwalText()== "pilih"){
                             view.setJtHari(null);
                             view.setJtMatkul(null);
                             view.setJtRuang(null);
@@ -117,7 +121,7 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
                             db.connect();
                             String sql = "SELECT * FROM jadwal"
                                 + " NATURAL JOIN mata_kuliah"
-                                + " WHERE id_jadwal = '"+ view.getCbJadwalIndex()+"'";
+                                + " WHERE id_jadwal = '"+ view.getCbJadwalText()+"'";
                             db.setRs(db.getStmt().executeQuery(sql));
                             while(db.getRs().next()){
                                 view.setJtHari(db.getRs().getString("waktu"));
@@ -134,4 +138,30 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
             JOptionPane.showMessageDialog(null, ex);
         }
     }
+// buat mahasiswa
+    
+//    public boolean cekRuangan (String id_jadwal) {
+//        boolean a = true;
+//        int i = 0;
+//        try {
+//            db.connect();
+//            String sql = "SELECT no_enroll FROM enroll WHERE id_jadwal = '" + id_jadwal + "'";
+//            db.setRs(db.getStmt().executeQuery(sql));
+//            while(db.getRs().next()) {
+//                i++;
+//            }
+//            sql = "SELECT kapasitas FROM jadwal NATURAL JOIN ruangan WHERE id_jadwal = '" + id_jadwal + "'";
+//            db.setRs(db.getStmt().executeQuery(sql));
+//            while(db.getRs().next()) {
+//               if (i >= db.getRs().getInt("kapasitas")){
+//                   a = false;
+//               }
+//            }
+//            db.disconnect();
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        return a;
+//    }
+    
 }

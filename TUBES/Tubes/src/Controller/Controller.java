@@ -29,15 +29,15 @@ public class Controller implements ActionListener{
         Object source = ae.getSource();
         if (source.equals(view.getBtnLogin())) {
             if (view.getUser() == "Mahasiswa") {
-                view.setVisible(false);
+                view.dispose();
                 new ControllerMahasiswa(db);
             }
             else if (view.getUser() == "Dosen") {
-                view.setVisible(false);
+                view.dispose();
                 new ControllerDosen(db);
             }
             else if (view.getUser() == "Admin") {
-                view.setVisible(false);
+                view.dispose();
                 new ControllerAdmin(db);
             }
         }

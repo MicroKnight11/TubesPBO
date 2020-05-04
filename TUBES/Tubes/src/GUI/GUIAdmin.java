@@ -10,7 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JList;
-import javax.swing.JTextField;
 
 /**
  *
@@ -336,10 +335,8 @@ public class GUIAdmin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUIAdmin().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new GUIAdmin().setVisible(true);
         });
     }
     

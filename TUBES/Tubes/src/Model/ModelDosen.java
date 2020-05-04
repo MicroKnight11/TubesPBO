@@ -21,8 +21,6 @@ import java.util.logging.Logger;
     public class ModelDosen extends Human{
         private String KK;
         private String NID;
-        private Database db;
-        private String sql; 
         
         public ModelDosen(String NID, String KK, String nama, String tanggalLahir) {
             super(nama, tanggalLahir);
@@ -46,12 +44,14 @@ import java.util.logging.Logger;
             this.NID = NID;
         }
         
-        public void liatJadwal(String id_jadwal) {
+        public void liatJadwal(String NID, Database db) {
             try{
                 db.connect();
-                sql = "SELECT * FROM jadwal WHERE id_jadwal = '" + id_jadwal +"';";
+                String sql = "SELECT * FROM jadwal WHERE NID = '" + NID +"';";
                 db.setRs(db.getStmt().executeQuery(sql));
-                
+                while(db.getRs().next()){
+                    
+                }
                 db.disconnect();
             } catch (SQLException ex) {
                 Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);

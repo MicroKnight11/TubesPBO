@@ -108,7 +108,7 @@
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jBCreateDosen" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBSearch" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
               <Component id="jScrollPane3" alignment="0" pref="436" max="32767" attributes="0"/>
@@ -127,12 +127,12 @@
                       <Component id="jLabelNID" min="-2" pref="39" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="jTextFieldNID" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="jBCreateDosen" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" pref="338" max="-2" attributes="0"/>
-                  <EmptySpace pref="427" max="32767" attributes="0"/>
+                  <EmptySpace pref="431" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -156,7 +156,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldNID">
         </Component>
-        <Component class="javax.swing.JButton" name="jBCreateDosen">
+        <Component class="javax.swing.JButton" name="jBSearch">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="11" style="0"/>
@@ -164,7 +164,7 @@
             <Property name="text" type="java.lang.String" value="Search"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCreateDosenActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSearchActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_back">

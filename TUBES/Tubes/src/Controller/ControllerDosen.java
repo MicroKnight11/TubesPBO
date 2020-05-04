@@ -31,33 +31,33 @@ public class ControllerDosen implements ActionListener{
         viewDosen = new MainGUIDosen();
         viewDosen.setVisible(true);
         viewDosen.addActionListener(this);    
-        this.db = db
-        this.dosen = dsn;
-        getlistData();
-        viewDosen.setDataDosen(listDosen);
+        this.db = db;
+       // this.dosen = dsn;
+        //getlistData();
+        //viewDosen.setDataDosen(listDosen);
     } 
     
-    public void getlistData(){
-        try{
-            db.connect();
-            String sql = "select * from dosen";
-            db.setRs(db.getStmt().executeQuery(sql));
-            listDosen.removeAll(listDosen);
-            while(db.getRs().next()){
-                ModelDosen dsn = new ModelDosen(db.getRs().getString("NIDN"), db.getRs().getString("FirstName"), db.getRs().getString("LastName"));
-                listDosen.add(dsn);          
-            }
-            db.disconnect();
-        }catch(Exception e){
-            System.out.println("Error refresh"+e.getMessage());
-        }
-    }
+//    public void getlistData(){
+//        try{
+//            db.connect();
+//            String sql = "select * from dosen";
+//            db.setRs(db.getStmt().executeQuery(sql));
+//            listDosen.removeAll(listDosen);
+//            while(db.getRs().next()){
+//                ModelDosen dsn = new ModelDosen(db.getRs().getString("NIDN"), db.getRs().getString("FirstName"), db.getRs().getString("LastName"));
+//                listDosen.add(dsn);          
+//            }
+//            db.disconnect();
+//        }catch(Exception e){
+//            System.out.println("Error refresh"+e.getMessage());
+//        }
+//    }
     
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         try {
             if (source.equals(viewDosen.getBtn_back())) {
-                new MainControllerHome();
+                new Controller();
                 viewDosen.dispose();
             } 
             else if (source.equals(viewDosen.getBtnCari())) {

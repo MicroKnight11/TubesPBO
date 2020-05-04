@@ -43,7 +43,7 @@ public class MainGUIDosen extends javax.swing.JFrame {
         jLDosen = new javax.swing.JLabel();
         jLabelNID = new javax.swing.JLabel();
         jTextFieldNID = new javax.swing.JTextField();
-        jBCreateDosen = new javax.swing.JButton();
+        jBSearch = new javax.swing.JButton();
         btn_back = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTabledosen = new javax.swing.JTable();
@@ -84,11 +84,11 @@ public class MainGUIDosen extends javax.swing.JFrame {
         jLabelNID.setFont(new java.awt.Font("Times New Roman", 3, 11)); // NOI18N
         jLabelNID.setText("NIDN");
 
-        jBCreateDosen.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        jBCreateDosen.setText("Search");
-        jBCreateDosen.addActionListener(new java.awt.event.ActionListener() {
+        jBSearch.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        jBSearch.setText("Search");
+        jBSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCreateDosenActionPerformed(evt);
+                jBSearchActionPerformed(evt);
             }
         });
 
@@ -140,7 +140,7 @@ public class MainGUIDosen extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addComponent(jTextFieldNID, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBCreateDosen)
+                .addComponent(jBSearch)
                 .addGap(27, 27, 27))
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
         );
@@ -156,10 +156,10 @@ public class MainGUIDosen extends javax.swing.JFrame {
                     .addComponent(jLabelNID, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextFieldNID, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBCreateDosen)))
+                        .addComponent(jBSearch)))
                 .addGap(124, 124, 124)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(419, Short.MAX_VALUE))
+                .addContainerGap(431, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,14 +182,14 @@ public class MainGUIDosen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBCreateDosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCreateDosenActionPerformed
+    private void jBSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jBCreateDosenActionPerformed
+    }//GEN-LAST:event_jBSearchActionPerformed
 
     /**
      * @param args the command line arguments
      */public JButton getBtnTambah() {
-        return jBCreateDosen;
+        return jBSearch;
     }
 
     public JButton getBtn_back(){
@@ -213,15 +213,27 @@ public class MainGUIDosen extends javax.swing.JFrame {
     }  
      
     public void addActionListener(ActionListener ae) {
-        jBCreateDosen.addActionListener(ae);
+        jBSearch.addActionListener(ae);
         btn_back.addActionListener(ae);
         
     }
     
+    public JButton getBtnCari() {
+        return jBSearch;
+    }
+     
+    public void setTabel(ArrayList<ModelDosen> Dosen){
+        for (int j = 0; j < Dosen.size(); j++) {
+            jTabledosen.setValueAt(Dosen.get(j).getNID(), j, 0);
+            jTabledosen.setValueAt(Dosen.get(j).getFirstName(), j, 1);
+            jTabledosen.setValueAt(Dosen.get(j).getLastName(), j, 2);
+        }
+    
+    }
      
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
-    private javax.swing.JButton jBCreateDosen;
+    private javax.swing.JButton jBSearch;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLDosen;
     private javax.swing.JLabel jLabelNID;
@@ -234,9 +246,4 @@ public class MainGUIDosen extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNID;
     // End of variables declaration//GEN-END:variables
 
-    private class jTextFieldFirstName {
-
-        public jTextFieldFirstName() {
-        }
-    }
 }

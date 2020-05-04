@@ -76,6 +76,7 @@ public class ControllerDosen implements ActionListener{
             }
             db.disconnect();
         } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "NID tidak ditemukan di database...");
             ex.printStackTrace();
         }           
     }

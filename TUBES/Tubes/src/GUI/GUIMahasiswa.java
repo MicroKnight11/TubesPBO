@@ -15,6 +15,8 @@ import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class GUIMahasiswa extends javax.swing.JFrame {
 
@@ -59,10 +61,10 @@ public class GUIMahasiswa extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jtMatkul = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txOutput = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         listMatkul = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableMhs = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -176,7 +178,7 @@ public class GUIMahasiswa extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfKelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -199,30 +201,63 @@ public class GUIMahasiswa extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        txOutput.setColumns(20);
-        txOutput.setRows(5);
-        jScrollPane3.setViewportView(txOutput);
-
         jScrollPane2.setViewportView(listMatkul);
+
+        jTableMhs.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nama Mahasiswa", "Nim"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jTableMhs);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -276,8 +311,7 @@ public class GUIMahasiswa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -387,7 +421,11 @@ public class GUIMahasiswa extends javax.swing.JFrame {
     public String getTfKelas() {
         return tfKelas.getText();
     }
-
+    
+    public String getTfMatkul() {
+       return jtMatkul.getText();
+    } 
+    
     public String getTfNIM() {
         return tfNIM.getText();
     }
@@ -400,16 +438,24 @@ public class GUIMahasiswa extends javax.swing.JFrame {
         return btnBack;
     }
     
-    public int getSelectedPeserta(){
-        return listMatkul.getSelectedIndex();
+    public String getSelectedMatkul(){
+        return listMatkul.getSelectedValue();
     }
     
     public void setDaftarMatkul(String[] daftarID){
         listMatkul.setListData(daftarID);
     }
-
-    public void setTexPeserta(String s) {
-        txOutput.setText(s);
+    
+    public JTable getjTablemhs() {
+        return jTableMhs;
+    }
+    
+     public void setjTablemhs(JTable jTableMhs) {
+        this.jTableMhs = jTableMhs;
+    }
+    public void setTabel(String nama, String NIM,int i) {
+        jTableMhs.setValueAt(nama, i, 0);
+        jTableMhs.setValueAt(NIM, i, 1);
     }
     public void resetView(){
         tfNama.setText("");
@@ -449,7 +495,8 @@ public class GUIMahasiswa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTableMhs;
     private javax.swing.JTextField jtHari;
     private javax.swing.JTextField jtMatkul;
     private javax.swing.JTextField jtRuang;
@@ -457,6 +504,5 @@ public class GUIMahasiswa extends javax.swing.JFrame {
     private javax.swing.JTextField tfKelas;
     private javax.swing.JTextField tfNIM;
     private javax.swing.JTextField tfNama;
-    private javax.swing.JTextArea txOutput;
     // End of variables declaration//GEN-END:variables
 }

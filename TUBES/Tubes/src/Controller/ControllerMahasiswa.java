@@ -7,6 +7,7 @@ import Model.ModelMahasiswa;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -35,7 +36,7 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
     }
     public String[] getMatkul() {
         String[] listMatkul = new String[db.getListMatkul().size()];
-        for (int i = 0; i < listRuangan.length; i++) {
+        for (int i = 0; i < listMatkul.length; i++) {
             listMatkul[i] = db.getListMatkul().get(i).getNama_MK();
         }
         return listMatkul;
@@ -51,19 +52,43 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
             else if (source.equals(view.getBtnAdd())) {
                 try {
                         String nama = view.getNama();
-                        String kelas = view.getTfKelas();
                         String nim = view.getTfNIM();
-                        int i = get
+                        String matkul = view.getTfMatkul();
+                        mhs.addMhs(nama, nim,matkul, db);
                         view.resetView();
-                        liatJadwal(NID, db);
                     
                 } catch (Exception es) {
                     System.out.println("Error 404 "+ es.getMessage());
-                    JOptionPane.showMessageDialog(null, "Data Dosen Tidak DItemukan");
+                   
                 }
             }
         } catch (Exception ef) {
-            JOptionPane.showMessageDialog(null, "Data Dosen Tidak DItemukan");
+            JOptionPane.showMessageDialog(null, "Eror");
+        }
+    }
+    
+    public void mousePressed(MouseEvent me) {
+        Object source = me.getSource();
+        if (source.equals(view.getListMatkul())) {
+            String nama_mk = view.getSelectedMatkul();
+            String detail = "";
+            try {
+                int i = 0;
+                db.connect();
+                String sql = "SELECT * FROM mahasiswa NATURAL JOIN mata_kuliah WHERE matkul = '"+ nama_mk +"'";
+                db.setRs(db.getStmt().executeQuery(sql));
+                while(db.getRs().next()){
+                   view.setTabel(
+                           db.getRs().getString("nama_mhs"),
+                           db.getRs().getString("nim"),
+                           i);
+                    i++;
+                                            
+                }
+                db.disconnect();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
     }
 }

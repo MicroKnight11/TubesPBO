@@ -57,6 +57,21 @@ public class ModelMahasiswa extends Human{
         }
     }
     
+    public void addMhs(String nama, String nim, String matkul, Database db) {
+        try {
+            db.connect();
+            String sql = "INSERT INTO mahasiswa VALUES ('"
+                    +nim+"','"
+                    +nama+"', xxx '"
+                    +"','"
+                    +matkul+"')";
+            db.setRs(db.getStmt().executeQuery(sql));
+            db.disconnect();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     
 }  
     

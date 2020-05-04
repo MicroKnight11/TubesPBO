@@ -2,6 +2,7 @@
 
 import Controller.Controller;
 import Model.Database;
+import Model.ModelMahasiswa;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,18 +22,8 @@ public class Driver {
     public static void main(String[] args) {
         new Controller();
 //    Database db = new Database();
-//        int i = 0;
-//        try {
-//            db.connect();
-//            String sql = "SELECT no_enroll FROM enroll ORDER BY no_enroll ASC";
-//            db.setRs(db.getStmt().executeQuery(sql));
-//            while (db.getRs().next()) {                
-//                i = db.getRs().getInt("no_enroll");
-//            }
-//            db.disconnect();
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        System.out.println(i);
+//    Model.ModelMahasiswa m = new ModelMahasiswa("123", "lol");
+////    m.addMhs(db);
+//        System.out.println(m.getNim());
     }  
 }

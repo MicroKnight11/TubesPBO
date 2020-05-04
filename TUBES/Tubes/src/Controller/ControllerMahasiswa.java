@@ -29,9 +29,6 @@ import javax.swing.JOptionPane;
 public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
     private GUIMahasiswa view;
     private Database db;
-    private ModelMahasiswa mhs;
-    private ArrayList<ModelMahasiswa> daftarmhs;
-    private static int rollNum;
     
     public ControllerMahasiswa(Database db) {
         this.db = db;
@@ -40,7 +37,6 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
         view.addMouseAdapter(this);
         view.setDaftarMatkul(getMatkul());
         combobox();
-       // rollNum = getRollNum();
         view.setVisible(true);
     }
     public String[] getMatkul() {
@@ -64,13 +60,11 @@ public class ControllerMahasiswa extends MouseAdapter implements ActionListener{
                         String nim = view.getTfNIM();
                         String id_jadwal = view.getCbJadwalText();
                         int i = getRollNum() + 1;
-                        System.out.println(i);
-                        mhs = new ModelMahasiswa(nim, nama);
+                        ModelMahasiswa mhs = new ModelMahasiswa(nim, nama);
                         mhs.addMhs(db);
                         mhs.addJadwal(id_jadwal, i, db);
                         mhs.addMatkul(id_jadwal, db);
                         view.resetView();               
-                        //rollNum++;
                 } catch (Exception es) {
                     es.printStackTrace();
 //                    JOptionPane.showMessageDialog(null, "input salah") ;                 

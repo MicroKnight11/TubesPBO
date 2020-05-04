@@ -17,7 +17,7 @@ public class ModelMahasiswa extends Human{
     private String nim;
     private ArrayList<ModelMatkul> listMatKul;
         
-    public ModelMahasiswa(String NIM, String nama) {
+    public ModelMahasiswa(String nim, String nama) {
         super(nama);
         this.nim = nim;
         listMatKul = new ArrayList();
@@ -34,7 +34,7 @@ public class ModelMahasiswa extends Human{
     public void addJadwal(String id_jadwal, int i, Database db){
         try {
             db.connect();
-            String sql = "INSERT INTO enroll value ("+i+",'"+id_jadwal+"','"+nim+"')";
+            String sql = "INSERT INTO enroll values ("+i+",'"+id_jadwal+"','"+nim+"')";
             db.setRs(db.getStmt().executeQuery(sql));
             db.disconnect();
         } catch (SQLException ex) {
@@ -48,8 +48,8 @@ public class ModelMahasiswa extends Human{
         try {
             db.connect();
             String sql = "SELECT kode_mk, nama_mk, sks, nid FROM jadwal"
-                + "natural join mata_kuliah"
-                + "where id_jadwal = '" +id_jadwal+"';";
+                + " natural join mata_kuliah"
+                + " where id_jadwal = '" +id_jadwal+"'";
             db.setRs(db.getStmt().executeQuery(sql));
             while (db.getRs().next()) {
                 ModelMatkul m = new ModelMatkul(

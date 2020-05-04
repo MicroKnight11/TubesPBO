@@ -12,17 +12,9 @@ package GUI;
 import Model.Database;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 public class GUIMahasiswa extends javax.swing.JFrame {
 

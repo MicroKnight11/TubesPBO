@@ -25,33 +25,13 @@ public class ControllerDosen implements ActionListener{
     private GUIDosen viewDosen;           
     Database db;
     private ModelDosen dosen;  
-    //private ArrayList<ModelDosen> listDosen = new ArrayList();
     
     public ControllerDosen(Database db) {
         viewDosen = new GUIDosen();
         viewDosen.setVisible(true);
         viewDosen.addActionListener(this);    
         this.db = db;
-       // this.dosen = dsn;
-        //getlistData();
-        //viewDosen.setDataDosen(listDosen);
     } 
-    
-//    public void getlistData(){
-//        try{
-//            db.connect();
-//            String sql = "select * from dosen";
-//            db.setRs(db.getStmt().executeQuery(sql));
-//            listDosen.removeAll(listDosen);
-//            while(db.getRs().next()){
-//                ModelDosen dsn = new ModelDosen(db.getRs().getString("NIDN"), db.getRs().getString("FirstName"), db.getRs().getString("LastName"));
-//                listDosen.add(dsn);          
-//            }
-//            db.disconnect();
-//        }catch(Exception e){
-//            System.out.println("Error refresh"+e.getMessage());
-//        }
-//    }
     
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
@@ -61,23 +41,13 @@ public class ControllerDosen implements ActionListener{
                 viewDosen.dispose();
             } 
             else if (source.equals(viewDosen.getBtnCari())) {
-//                getlistData();
                 try {
                     if (viewDosen.getjTextFieldNID().getText().equals("")){
                         JOptionPane.showMessageDialog(null, "NIDN harus diisi terlebih dahulu");
                     } else {
-//                        db.connect();
                         String NID = viewDosen.getjTextFieldNID().getText();
                         viewDosen.resetTable();
                         liatJadwal(NID, db);
-//                        String sql = "SELECT * FROM mata_kuliah NATURAL JOIN jadwal WHERE NID ='"+NID+"'";
-//                        db.setRs(db.getStmt().executeQuery(sql));
-//                        while(db.getRs().next()){
-//                            ModelDosen dsn1 = new ModelDosen(rs.getString("NIDN"), rs.getString("FirstName"), rs.getString("LastName"));
-//                            listDosen.add(dsn1);          
-//                        }
-//                        db.disconnect();
-//                        viewDosen.setDataDosen(listDosen);
                     }
                 } catch (Exception es) {
                     System.out.println("Error 404 "+ es.getMessage());

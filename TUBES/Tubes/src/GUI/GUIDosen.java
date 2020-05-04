@@ -188,8 +188,9 @@ public class GUIDosen extends javax.swing.JFrame {
     }//GEN-LAST:event_jBSearchActionPerformed
 
     /**
-     * @param args the command line arguments
-     */public JButton getBtnTambah() {
+     * @return 
+     */
+    public JButton getBtnTambah() {
         return jBSearch;
     }
 

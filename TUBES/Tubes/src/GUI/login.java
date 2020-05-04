@@ -10,11 +10,7 @@ package GUI;
  * @author user
  */
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JList;
-import javax.swing.JTextArea;
 
 public class login extends javax.swing.JFrame {
 
@@ -125,7 +121,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
-     * @param args the command line arguments
+     * @return 
      */
 
       

@@ -404,7 +404,7 @@ public class GUIMahasiswa extends javax.swing.JFrame {
         return listMatkul.getSelectedIndex();
     }
     
-    public void setDaftarPeserta(String[] daftarID){
+    public void setDaftarMatkul(String[] daftarID){
         listMatkul.setListData(daftarID);
     }
 

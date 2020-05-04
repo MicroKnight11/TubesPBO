@@ -34,29 +34,29 @@ public class ControllerDosen implements ActionListener{
     } 
     
     public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource();
-        try {
-            if (source.equals(viewDosen.getBtn_back())) {
-                new Controller();
-                viewDosen.dispose();
-            } 
-            else if (source.equals(viewDosen.getBtnCari())) {
-                try {
-                    if (viewDosen.getjTextFieldNID().getText().equals("")){
-                        JOptionPane.showMessageDialog(null, "NIDN harus diisi terlebih dahulu");
-                    } else {
-                        String NID = viewDosen.getjTextFieldNID().getText();
-                        viewDosen.resetTable();
-                        liatJadwal(NID, db);
+            Object source = e.getSource();
+            try {
+                if (source.equals(viewDosen.getBtn_back())) {
+                    new Controller();
+                    viewDosen.dispose();
+                } 
+                else if (source.equals(viewDosen.getBtnCari())) {
+                    try {
+                        if (viewDosen.getjTextFieldNID().getText().equals("")){
+                            JOptionPane.showMessageDialog(null, "NIDN harus diisi terlebih dahulu");
+                        } else {
+                            String NID = viewDosen.getjTextFieldNID().getText();
+                            viewDosen.resetTable();
+                            liatJadwal(NID, db);
+                        }
+                    } catch (Exception es) {
+                        System.out.println("Error 404 "+ es.getMessage());
+                        JOptionPane.showMessageDialog(null, "Data Dosen Tidak DItemukan");
                     }
-                } catch (Exception es) {
-                    System.out.println("Error 404 "+ es.getMessage());
-                    JOptionPane.showMessageDialog(null, "Data Dosen Tidak DItemukan");
                 }
+            } catch (Exception ef) {
+                JOptionPane.showMessageDialog(null, "Data Dosen Tidak DItemukan");
             }
-        } catch (Exception ef) {
-            JOptionPane.showMessageDialog(null, "Data Dosen Tidak DItemukan");
-        }
     }
     
     public void liatJadwal(String NID, Database db) {

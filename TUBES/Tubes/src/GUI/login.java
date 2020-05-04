@@ -10,11 +10,7 @@ package GUI;
  * @author user
  */
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JList;
-import javax.swing.JTextArea;
 
 public class login extends javax.swing.JFrame {
 
@@ -37,10 +33,8 @@ public class login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         userID = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        userPass = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,8 +48,6 @@ public class login extends javax.swing.JFrame {
         });
 
         jLabel1.setText("User        :");
-
-        jLabel2.setText("Password :");
 
         btnLogin.setText("LOGIN");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -77,17 +69,13 @@ public class login extends javax.swing.JFrame {
                         .addGap(209, 209, 209)
                         .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
+                        .addGap(175, 175, 175)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
+                                .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(userID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(userPass))))))
+                                .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(229, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,15 +83,11 @@ public class login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(userPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                .addGap(75, 75, 75)
                 .addComponent(btnLogin)
                 .addContainerGap(80, Short.MAX_VALUE))
         );
@@ -120,7 +104,7 @@ public class login extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -137,7 +121,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
-     * @param args the command line arguments
+     * @return 
      */
 
       
@@ -147,16 +131,12 @@ public class login extends javax.swing.JFrame {
             return userID.getItemAt(i);
         }
         
-        public String getPass(){
-            return userPass.getText();
-        }
         
         public void addActionListener(ActionListener e){
             btnLogin.addActionListener(e);
          }
         
         public void resetView(){
-            userPass.setText("");
             userID.setSelectedIndex(0);
         }
 
@@ -168,10 +148,8 @@ public class login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> userID;
-    private javax.swing.JTextField userPass;
     // End of variables declaration//GEN-END:variables
 }

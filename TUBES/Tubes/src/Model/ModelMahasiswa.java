@@ -4,98 +4,82 @@
  * and open the template in the editor.
  */
 package Model;
-//import java.sql.Statement;
-//import java.util.ArrayList;
-//import javax.swing.JOptionPane;
-import Model.Matkul.ModelMatkul;
+
+import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.*;
-import javax.swing.JOptionPane;
 /**
  *
  * @author R O G
  */
-//public class Mahasiswa {
-//    private Database db;
-//    private String sql;
-//    private ArrayList<ModelMahasiswa> listMahasiswa = new ArrayList();
-    
-    public class ModelMahasiswa extends Human{
-        private String nim;
-        private ArrayList<ModelMatkul> listMatKul;
+
+public class ModelMahasiswa extends Human{
+    private String nim;
+    private ArrayList<ModelMatkul> listMatKul;
         
-        public ModelMahasiswa(String NIM, String nama, String tanggalLahir) {
-            super(nama, tanggalLahir);
-            this.nim = nim;
-            listMatKul = new ArrayList();
-        }    
+    public ModelMahasiswa(String nim, String nama) {
+        super(nama);
+        this.nim = nim;
+        listMatKul = new ArrayList();
+    }    
 
-        public String getNim() {
-            return nim;
-        }
+    public String getNim() {
+        return nim;
+    }
 
-        public void setNim(String nim) {
-            this.nim = nim;
-        }
-    }  
+    public void setNim(String nim) {
+        this.nim = nim;
+    }
     
-//    public Mahasiswa(Database a) {
-//        db = a;
-//        try {
-//            db.connect();
-//            sql = "SELECT * FROM mahasiswa";
-//            db.setRs(db.getStmt().executeQuery(sql));
-//            ModelMahasiswa m;
-//            while (db.getRs().next()) {
-//                m = new ModelMahasiswa(
-//                    db.getRs().getString("nim"),
-//                    db.getRs().getString("nama"),
-//                    db.getRs().getString("tgl_lahir")
-//                );
-//                listMahasiswa.add(m);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();;
-//        }
-//    }
-//    
-//    public void addMahasiswa(ModelMahasiswa m){
-//        //boolean value = false;
-//        try{   
-//            db.connect();
-//            sql = "INSERT INTO mahasiswa VALUES('" + m.getNim()+ "','" + m.getNama() +"','"+ m.getTanggalLahir() +"')";
-//            db.setRs(db.getStmt().executeQuery(sql));
-//            db.disconnect();
-//            listMahasiswa.add(m);
-//            //value = true;
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Penyimpanan Gagal, "+e.getMessage());
-//        }
-//        //return value;
-//    }
-//    
-//    public void deleteMahasiswa(ModelMahasiswa m){
-//        //boolean value = false;
-//        try{   
-//            db.connect();
-//            sql = "DELETE FROM mahasiswa WHERE nim = '" + m.nim + "'";
-//            db.setRs(db.getStmt().executeQuery(sql));
-//            db.disconnect();
-//            listMahasiswa.remove(m);
-//            //value = true;
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Delete Gagal, "+e.getMessage());
-//        }
-//        //return value;
-//    }
-//
-//    public ArrayList<ModelMahasiswa> getListMahasiswa() {
-//        return listMahasiswa;
-//    }
-//
-//    public void setListMahasiswa(ArrayList<ModelMahasiswa> listMahasiswa) {
-//        this.listMahasiswa = listMahasiswa;
-//    }
-//    
-//    
-//}
+    public void addJadwal(String id_jadwal, int i, Database db){
+        try {
+            db.connect();
+            String sql = "INSERT INTO enroll values ("+i+",'"+id_jadwal+"','"+nim+"')";
+            db.setRs(db.getStmt().executeQuery(sql));
+            db.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+    public void addMatkul(String id_jadwal, Database db) {
+        try {
+            db.connect();
+            String sql = "SELECT kode_mk, nama_mk, sks, nid FROM jadwal"
+                + " natural join mata_kuliah"
+                + " where id_jadwal = '" +id_jadwal+"'";
+            db.setRs(db.getStmt().executeQuery(sql));
+            while (db.getRs().next()) {
+                ModelMatkul m = new ModelMatkul(
+                    db.getRs().getString("kode_MK"),
+                    db.getRs().getString("nama_MK"),
+                    db.getRs().getString("SKS"),
+                    db.getRs().getString("nid"),
+                    db
+                );
+            listMatKul.add(m);
+        }
+        db.disconnect();
+        } catch (SQLException ex) {
+        Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ModelAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void addMhs(Database db) {
+        try {
+            db.connect();
+            String sql = "INSERT INTO mahasiswa VALUES ('"
+                    +nim+"','"
+                    +super.getNama()+"')";
+            db.setRs(db.getStmt().executeQuery(sql));
+            db.disconnect();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }      
+}  
+    
